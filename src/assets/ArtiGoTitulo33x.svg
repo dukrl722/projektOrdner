@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="94.71" height="33" viewBox="0 0 287 100">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 60px;
+        text-anchor: middle;
+        fill: #514766;
+        font-family: Roboto;
+      }
+
+      .cls-2 {
+        font-weight: 800;
+      }
+    </style>
+  </defs>
+  <text id="ArtiGo_" data-name="ArtiGo!" class="cls-1" x="95.335" y="50.326"><tspan x="95.335">Arti<tspan class="cls-2">Go!</tspan></tspan></text>
+</svg>
