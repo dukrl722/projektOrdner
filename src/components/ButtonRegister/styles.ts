@@ -6,6 +6,7 @@ export const themes = StyleSheet.create({
     container:{
       	width: 331,
       	height: 67,
+		marginBottom: 15,
       	alignItems: 'center',
       	justifyContent: 'center',
       	borderRadius: 50,

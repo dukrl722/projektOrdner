@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
+import {useNavigation} from "@react-navigation/native";
 
 import { styles } from './styles';
 
@@ -11,6 +12,19 @@ import { ButtonLogin } from '../../components/ButtonLogin';
 import { ButtonRegister } from '../../components/ButtonRegister';
 
 export function Select() {
+
+    const navigation = useNavigation();
+
+    function handleLogin() {
+        // @ts-ignore
+        navigation.navigate('Login');
+    }
+
+    function handleSignUp() {
+        // @ts-ignore
+        navigation.navigate('SignUp');
+    }
+
     return (
         <Background>
           
@@ -24,9 +38,8 @@ export function Select() {
                 </View>
 
                 <View>                   
-                    <ButtonRegister name="Inscrever-se" />
-                    <Text>  </Text>
-                    <ButtonLogin name="Entrar" />
+                    <ButtonRegister name="Inscrever-se" onPress={handleSignUp}/>
+                    <ButtonLogin name="Entrar" onPress={handleLogin} />
                 </View>
             </View>
     

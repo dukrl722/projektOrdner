@@ -13,10 +13,10 @@ import { ButtonLoginSquare } from '../../components/ButtonLoginSquare';
 import { InputRa } from '../../components/InputRa';
 import { InputPassword } from "../../components/InputPassword";
 
-export function Login() {
+export function SignUp() {
     return (
         <Background>
-          
+
             <View style={styles.container}>
                 <View style={styles.viewContent}>
                     <Image source={IconProject} resizeMode="stretch" style={styles.image} />
@@ -26,12 +26,13 @@ export function Login() {
                     <View>
                         <InputRa placeholder="Registro do Aluno" />
                         <InputPassword confirmPassword={false} placeholder="Senha" />
+                        <InputPassword confirmPassword={true} placeholder="Confirmar Senha" />
                     </View>
 
-                    <ButtonLoginSquare name="Entrar" />
+                    <ButtonLoginSquare name="Inscreva-se" />
                 </View>
             </View>
-    
+
         </ Background>
     );
 }
