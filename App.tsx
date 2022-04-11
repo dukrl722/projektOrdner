@@ -7,7 +7,7 @@ import AppLoading from 'expo-app-loading';
 
 import { Background } from './src/components/Background'
 import {StatusBar} from "react-native";
-import { AuthRoutes } from './src/routes';
+import { AuthRoutes } from './src/routes/index.routes';
 
 export default function App() {
 
