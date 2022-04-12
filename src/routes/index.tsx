@@ -6,6 +6,7 @@ import { theme } from '../global/styles/theme';
 import { Select } from '../screens/Select';
 import { Login } from "../screens/Login";
 import { SignUp } from "../screens/SignUp";
+import { Home } from "../screens/Home";
 
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -24,6 +25,7 @@ export function AuthRoutes() {
                 <Screen name="Select" component={Select}/>
                 <Screen name="Login" component={Login}/>
                 <Screen name="SignUp" component={SignUp}/>
+                <Screen name="Home" component={Home}/>
             </Navigator>
         </NavigationContainer>
         
