@@ -30,5 +30,6 @@ export const theme = {
         backgroundColor: '#DADADA',
         paddingBottom: 14,                        
         height: 70,
+        alignItems: 'center',
     }
 };
