@@ -1,13 +1,14 @@
 import React from 'react';
-import {View, Text, Image, FlatList} from 'react-native';
+import { View, Text, Image, FlatList } from 'react-native';
 
-import {RectButton} from "react-native-gesture-handler";
+import { RectButton } from "react-native-gesture-handler";
 
 import { themes } from './styles';
 
 import { Background } from '../../components/Background';
-import {Profile} from "../../components/Profile";
-import {CardInfo} from "../../components/CardInfo";
+import { Profile } from "../../components/Profile";
+import { CardInfo } from "../../components/CardInfo";
+import { FilterModal } from '../../components/FiltroModal';
 
 export function Home() {
 
@@ -48,14 +49,12 @@ export function Home() {
                     <Profile />
                 </View>
                 <View>
-                    <RectButton style={themes.buttonContainer}>
-                        <Text style={themes.textContainer}>Filtros</Text>
-                    </RectButton>
+                    <FilterModal></FilterModal>
                 </View>
                 <FlatList
                     data={data}
                     keyExtractor={item => item.id}
-                    renderItem={({item}) => (
+                    renderItem={({ item }) => (
                         <CardInfo data={item} />
                     )}
                 />
