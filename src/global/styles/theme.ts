@@ -16,11 +16,20 @@ export const theme = {
         menuIconSelected: '#3f236f',
 
         modalBackground: '#FCFCFE',
+        
+
     },
 
     fonts: {
         title700: 'Roboto_700Bold',
         text400: 'Roboto_400Regular',
         text500: 'Roboto_500Medium',
+    },
+
+    tabBar: {
+        backgroundColor: '#DADADA',
+        paddingBottom: 14,                        
+        height: 70,
+        alignItems: 'center',
     }
 };

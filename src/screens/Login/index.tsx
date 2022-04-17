@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 
+import {useNavigation} from "@react-navigation/native";
+
 import { styles } from './styles';
 
 import IconProject from '../../assets/icon.png';
@@ -14,6 +16,14 @@ import { InputRa } from '../../components/InputRa';
 import { InputPassword } from "../../components/InputPassword";
 
 export function Login() {
+
+    const navigation = useNavigation();
+
+    function handleAccess() {
+        // @ts-ignore
+        navigation.navigate('Home');
+    }
+
     return (
         <Background>
           
@@ -28,7 +38,7 @@ export function Login() {
                         <InputPassword confirmPassword={false} placeholder="Senha" />
                     </View>
 
-                    <ButtonLoginSquare name="Entrar" />
+                    <ButtonLoginSquare name="Entrar" onPress={handleAccess} />
                 </View>
             </View>
     
