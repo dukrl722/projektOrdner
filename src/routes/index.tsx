@@ -9,6 +9,7 @@ import { Select } from '../screens/Select';
 import { Login } from "../screens/Login";
 import { SignUp } from "../screens/SignUp";
 import { Home } from "../screens/Home";
+import { Details } from '../screens/Details';
 
 import { Feather } from '@expo/vector-icons'
 
@@ -18,15 +19,14 @@ export function AuthRoutes() {
     return (
         <NavigationContainer>
             <Navigator
-
                 screenOptions={{
                     headerShown: false,
                     headerStyle: {
                         backgroundColor: theme.colors.secondary100
                     },
                     tabBarActiveTintColor: '#fff',
-                    tabBarStyle: theme.tabBar
-                }}>
+                    // tabBarStyle: theme.tabBar
+            }}>
 
                 <Screen
                     name="CHAMA O MODAL DE AJUDA/TUTORIAL"
@@ -68,7 +68,10 @@ export function AuthRoutes() {
                         tabBarLabel: () => { return null },
                     }}
                 />
-       
+                <Screen
+                    name='Details'
+                    component={Details}
+                />       
             </Navigator>
         </NavigationContainer>
 
