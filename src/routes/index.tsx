@@ -27,7 +27,11 @@ export function AuthRoutes() {
                     tabBarActiveTintColor: '#fff',
                     // tabBarStyle: theme.tabBar
             }}>
-
+                <Screen
+                    name='Details'
+                    component={Details}
+                />  
+                
                 <Screen
                     name="CHAMA O MODAL DE AJUDA/TUTORIAL"
                     component={SignUp}
@@ -68,10 +72,7 @@ export function AuthRoutes() {
                         tabBarLabel: () => { return null },
                     }}
                 />
-                <Screen
-                    name='Details'
-                    component={Details}
-                />       
+     
             </Navigator>
         </NavigationContainer>
 

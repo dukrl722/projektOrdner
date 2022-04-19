@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, FlatList, ScrollView } from 'react-native';
 import { Header } from '../../components/Header';
 import { themes } from './styles';
 import { theme } from '../../global/styles/theme';
+import { useNavigation } from '@react-navigation/native';
 
 export interface User {
     avatar: string,
@@ -16,7 +17,7 @@ export function Details() {
 
     const data = {
         avatar: 'https://github.com/dukrl722.png',
-        name: 'Eduardo',
+        name: 'Eduardo da Silva',
         city: 'Dois Vizinhos',
         graduation: 'Engenharia de Software',
         description: 'Estou com projetos referentes a arquitetura de ' +
@@ -62,52 +63,63 @@ export function Details() {
         ]
     });
 
+    const navigation = useNavigation();
+
     async function loadUser() {
         //let userData =  await api.get('/user');
         
         setUser(data);
-    }
+    };
+
+    function handleGoBack() {
+        navigation.goBack();
+    };
 
     useEffect(() => {
         loadUser();
     }, []);
 
     return (
-        <View style={themes.container}>
+        <>
             <Header 
-                headerCenter={undefined}
-                headerLeft={undefined}
-                headerRight={undefined}
+                title='Detalhes'
+                goBackAction={handleGoBack}
             />
-            <View style={themes.container}>
-                <View style={themes.imageContainer}>
-                    <Image source={{ uri: user.avatar }} style={themes.image} />
+            <ScrollView style={themes.container} showsVerticalScrollIndicator={false} >
+                <View style={themes.container}>
+                    <View style={themes.imageContainer}>
+                        <Image source={{ uri: user.avatar }} style={themes.image} />
+                    </View>
+                    <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'center' }}>
+                        <Text style={themes.title}>{user.name} - </Text>
+                        <Text style={themes.titleBold}>{user.city}</Text>
+                    </View>
+                    <Text style={themes.subtitle}>{user.graduation}</Text>
+                    <View style={themes.descriptionContainer}>
+                        <Text style={themes.text}>{user.description}</Text>
+                    </View>
+                    <View style={themes.workAreasContainer}>
+                    <Text style={themes.titleBold} >Áreas Trabalhadas</Text>
+                        {user.workAreas.map(wa => {
+                            return (
+                                <View style={themes.itens}>
+                                    <Text style={themes.subtitle}>{wa}</Text>
+                                </View>
+                            )
+                        })}
+                    </View>
+                    <View style={themes.projectsContainer}>
+                        <Text style={themes.titleBold}>Projetos</Text>
+                        {user.projects.map(p => {
+                            return (
+                                <View style={themes.itens}>
+                                    <Text style={themes.subtitle}>{p.title}</Text>
+                                </View>
+                            )
+                        })}
+                    </View>
                 </View>
-                <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'center' }}>
-                    <Text style={themes.title}>{user.name} - </Text>
-                    <Text style={themes.titleBold}>{user.city}</Text>
-                </View>
-                <Text style={themes.title}>{user.graduation}</Text>
-                <Text style={themes.text}>{user.description}</Text>
-                <Text style={themes.titleBold} >Áreas Trabalhadas</Text>
-                <View style={themes.workAreasContainer}>
-                    {user.workAreas.map(wa => {
-                        return (
-                            <View style={themes.itens}>
-                                <Text style={themes.text}>{wa}</Text>
-                            </View>
-                        )
-                    })}
-                </View>
-                <Text style={themes.titleBold}>Projetos</Text>
-                {user.projects.map(p => {
-                    return (
-                        <View style={themes.itens}>
-                            <Text style={themes.text}>{p.title}</Text>
-                        </View>
-                    )
-                })}
-            </View>
-        </View>
+            </ScrollView>
+        </>
     )
 }
