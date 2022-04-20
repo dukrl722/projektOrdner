@@ -86,38 +86,38 @@ export function Details() {
                 goBackAction={handleGoBack}
             />
             <ScrollView style={themes.container} showsVerticalScrollIndicator={false} >
-                <View style={themes.container}>
-                    <View style={themes.imageContainer}>
-                        <Image source={{ uri: user.avatar }} style={themes.image} />
-                    </View>
+                <View style={themes.imageContainer}>
+                    <Image source={{ uri: user.avatar }} style={themes.image} />
+                </View>
+                <View style={{ paddingVertical: 10 }}>
                     <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'center' }}>
                         <Text style={themes.title}>{user.name} - </Text>
                         <Text style={themes.titleBold}>{user.city}</Text>
                     </View>
                     <Text style={themes.subtitle}>{user.graduation}</Text>
-                    <View style={themes.descriptionContainer}>
-                        <Text style={themes.text}>{user.description}</Text>
-                    </View>
-                    <View style={themes.workAreasContainer}>
+                </View>
+                <View style={{ paddingVertical: 10 }}>
+                    <Text style={themes.text}>{user.description}</Text>
+                </View>
+                <View style={themes.itensContainer}>
                     <Text style={themes.titleBold} >Áreas Trabalhadas</Text>
                         {user.workAreas.map(wa => {
                             return (
                                 <View style={themes.itens}>
-                                    <Text style={themes.subtitle}>{wa}</Text>
+                                    <Text style={themes.itensText}>{wa}</Text>
                                 </View>
                             )
                         })}
-                    </View>
-                    <View style={themes.projectsContainer}>
-                        <Text style={themes.titleBold}>Projetos</Text>
-                        {user.projects.map(p => {
-                            return (
-                                <View style={themes.itens}>
-                                    <Text style={themes.subtitle}>{p.title}</Text>
-                                </View>
-                            )
-                        })}
-                    </View>
+                </View>
+                <View style={themes.itensContainer}>
+                    <Text style={themes.titleBold}>Projetos</Text>
+                    {user.projects.map(p => {
+                        return (
+                            <View style={themes.itens}>
+                                <Text style={themes.itensText}>{p.title}</Text>
+                            </View>
+                        )
+                    })}
                 </View>
             </ScrollView>
         </>

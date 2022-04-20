@@ -20,39 +20,36 @@ export const themes = StyleSheet.create({
     },
     titleBold: {
         fontFamily: theme.fonts.title700,
-        color: theme.colors.secondary100,
+        color: theme.colors.secondary90,
         fontSize: 20,
         textAlign: 'center'
     },
     title: {
         fontFamily: theme.fonts.text400,
-        color: theme.colors.secondary100,
+        color: theme.colors.secondary90,
         fontSize: 20,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     subtitle: {
         fontFamily: theme.fonts.text400,
-        color: theme.colors.secondary100,
+        color: theme.colors.secondary90,
         fontSize: 16,
-        textAlign: 'center'
+        textAlign: 'center',
+        paddingVertical: 10
     },
     text: {
         fontFamily: theme.fonts.text400,
-        color: theme.colors.secondary100
+        color: theme.colors.secondary90
     },
     itens: {
-        paddingVertical: 10,
-        alignItems: 'flex-start'
+        paddingVertical: 10
     },
-    workAreasContainer: {
-        //width: '100%',
-        paddingVertical: 20
+    itensText: {
+        fontFamily: theme.fonts.text400,
+        color: theme.colors.secondary90,
+        fontSize: 16
     },
-    projectsContainer: {
-        //width: '100%',
-        paddingVertical: 20
-    },
-    descriptionContainer: {
+    itensContainer: {
         paddingVertical: 20
     }
 })
