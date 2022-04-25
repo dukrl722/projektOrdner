@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Image, FlatList } from 'react-native';
+import React, { useRef } from 'react';
+import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 
 import { RectButton } from "react-native-gesture-handler";
 
@@ -8,7 +8,8 @@ import { themes } from './styles';
 import { Background } from '../../components/Background';
 import { Profile } from "../../components/Profile";
 import { CardInfo } from "../../components/CardInfo";
-import { FilterModal } from '../../components/FiltroModal';
+import { FilterModal } from '../../components/FilterModal';
+import { BottomSheet, BottomSheetRef } from 'react-native-sheet';
 
 export function Home() {
 
@@ -41,6 +42,7 @@ export function Home() {
                 'ficar bonitinho. Não sei se aqui vai ser a descrição ou o que'
         }
     ];
+    const bottomSheet = useRef<BottomSheetRef>(null);
 
     return (
         <Background>
@@ -49,7 +51,14 @@ export function Home() {
                     <Profile />
                 </View>
                 <View>
-                    <FilterModal></FilterModal>
+                    <BottomSheet height={655} ref={bottomSheet}>
+                        <FilterModal></FilterModal>
+                    </BottomSheet>
+                    <TouchableOpacity onPress={() => bottomSheet.current?.show()}>
+                        <RectButton style={themes.buttonContainer}>
+                            <Text style={themes.textContainer}>Filtros</Text>
+                        </RectButton>
+                    </TouchableOpacity>
                 </View>
                 <FlatList
                     data={data}

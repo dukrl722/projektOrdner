@@ -9,7 +9,7 @@ import { Select } from '../screens/Select';
 import { Login } from "../screens/Login";
 import { SignUp } from "../screens/SignUp";
 import { Home } from "../screens/Home";
-import {FilterModal} from "../components/FiltroModal";
+import {FilterModal} from "../components/FilterModal";
 
 import { Feather } from '@expo/vector-icons'
 

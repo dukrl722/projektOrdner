@@ -8,12 +8,10 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 0,
     overflow: 'hidden',
-    backgroundColor: 'rgba(	81, 71, 102, 0.8)'
-
+    backgroundColor: '#FDFDFD'
   },
   modalView: {
     margin: 0,
-    backgroundColor: "white",
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 50,
     padding: 35,
@@ -24,10 +22,6 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2
-  },
-  buttonClose: {
-    backgroundColor: theme.tabBar.backgroundColor,
-    marginTop: 40
   },
   textStyle: {
     color: "white",
