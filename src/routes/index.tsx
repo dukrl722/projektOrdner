@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { SafeAreaView } from 'react-native';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -17,64 +19,65 @@ const { Navigator, Screen } = createBottomTabNavigator();
 
 export function AuthRoutes() {
     return (
-        <NavigationContainer>
-            <Navigator
-                screenOptions={{
-                    headerShown: false,
-                    headerStyle: {
-                        backgroundColor: theme.colors.secondary100
-                    },
-                    tabBarActiveTintColor: '#fff',
-                    // tabBarStyle: theme.tabBar
-            }}>
-                <Screen
-                    name='Details'
-                    component={Details}
-                />  
-                
-                <Screen
-                    name="CHAMA O MODAL DE AJUDA/TUTORIAL"
-                    component={SignUp}
-                    options={{
-                        tabBarIcon: () => {
-                            return <Feather name="help-circle" size={30} color="#000" />
+        <SafeAreaView style={{ flex: 1 }}>
+            <NavigationContainer>
+                <Navigator
+                    screenOptions={{
+                        headerShown: false,
+                        headerStyle: {
+                            backgroundColor: theme.colors.secondary100
                         },
-                        tabBarLabel: () => { return null },
-                    }}
-                />
-                <Screen
-                    name="DIFERECIONA PARA A TELA INICIAL"
-                    component={Select}
-                    options={{
-                        tabBarIcon: () => {
-                            return <Feather name="home" size={30} color="#000" />
-                        },
-                        tabBarLabel: () => { return null },
-                    }}
-                />
-                <Screen
-                    name="DIFERECIONA PARA O PERFIL"
-                    component={Login}
-                    options={{
-                        tabBarIcon: () => {
-                            return <Feather name="user" size={30} color="#000" />
-                        },
-                        tabBarLabel: () => { return null },
-                    }}
-                />
-                <Screen
-                    name="CHAMA O MODAL DE LOG OUT"
-                    component={SignUp}
-                    options={{
-                        tabBarIcon: () => {
-                            return <Feather name="log-out" size={30} color="#000" />
-                        },
-                        tabBarLabel: () => { return null },
-                    }}
-                />
-     
-            </Navigator>
-        </NavigationContainer>
-
+                        tabBarActiveTintColor: '#fff',
+                        // tabBarStyle: theme.tabBar
+                }}>
+                    <Screen
+                        name='Details'
+                        component={Details}
+                    />  
+                    
+                    <Screen
+                        name="CHAMA O MODAL DE AJUDA/TUTORIAL"
+                        component={SignUp}
+                        options={{
+                            tabBarIcon: () => {
+                                return <Feather name="help-circle" size={30} color="#000" />
+                            },
+                            tabBarLabel: () => { return null },
+                        }}
+                    />
+                    <Screen
+                        name="DIFERECIONA PARA A TELA INICIAL"
+                        component={Select}
+                        options={{
+                            tabBarIcon: () => {
+                                return <Feather name="home" size={30} color="#000" />
+                            },
+                            tabBarLabel: () => { return null },
+                        }}
+                    />
+                    <Screen
+                        name="DIFERECIONA PARA O PERFIL"
+                        component={Login}
+                        options={{
+                            tabBarIcon: () => {
+                                return <Feather name="user" size={30} color="#000" />
+                            },
+                            tabBarLabel: () => { return null },
+                        }}
+                    />
+                    <Screen
+                        name="CHAMA O MODAL DE LOG OUT"
+                        component={SignUp}
+                        options={{
+                            tabBarIcon: () => {
+                                return <Feather name="log-out" size={30} color="#000" />
+                            },
+                            tabBarLabel: () => { return null },
+                        }}
+                    />
+        
+                </Navigator>
+            </NavigationContainer>
+        </SafeAreaView>
     )
 }
