@@ -10,12 +10,12 @@ type Props = TextInputProps & {
     placeholder: string;
 } 
 
-export function InputRa({ placeholder, ...rest } : Props) {
+export function InputRa({ placeholder, onChangeText, ...rest } : Props) {
     return (
         <View style={themes.container}>
             <Image source={UserIcon} style={themes.image} />
             <LineDivider />
-            <DefaultInput placeholder={placeholder} />
+            <DefaultInput placeholder={placeholder} onChangeText={onChangeText} />
         </View>
     )
 }

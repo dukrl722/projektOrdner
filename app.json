@@ -2,6 +2,7 @@
   "expo": {
     "name": "projektOrdner",
     "slug": "projektOrdner",
+    "owner": "gbrefosco",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,13 +18,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.projektOrdner"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.projektOrdner"
     },
     "web": {
       "favicon": "./assets/favicon.png"
