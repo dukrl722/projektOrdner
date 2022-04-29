@@ -8,7 +8,7 @@ import { theme } from '../global/styles/theme';
 import { Select } from '../screens/Select';
 import { Login } from "../screens/Login";
 import { SignUp } from "../screens/SignUp";
-import { Home } from "../screens/Home";
+//import { Home } from "../screens/Home";
 
 import { Feather } from '@expo/vector-icons'
 
@@ -39,7 +39,7 @@ export function AuthRoutes() {
                     }}
                 />
                 <Screen
-                    name="DIFERECIONA PARA A TELA INICIAL"
+                    name="DIRECIONA PARA A TELA INICIAL"
                     component={Select}
                     options={{
                         tabBarIcon: () => {
@@ -49,7 +49,7 @@ export function AuthRoutes() {
                     }}
                 />
                 <Screen
-                    name="DIFERECIONA PARA O PERFIL"
+                    name="DIRECIONA PARA O PERFIL"
                     component={Login}
                     options={{
                         tabBarIcon: () => {
