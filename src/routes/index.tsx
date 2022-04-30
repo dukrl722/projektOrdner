@@ -8,6 +8,7 @@ import { theme } from '../global/styles/theme';
 import { Select } from '../screens/Select';
 import { Login } from "../screens/Login";
 import { SignUp } from "../screens/SignUp";
+import { Help } from "../screens/Help";
 
 import { Home } from "../screens/Home";
 import {FilterModal} from "../components/FilterModal";
@@ -34,7 +35,7 @@ export function AuthRoutes() {
 
                 <Screen
                     name="CHAMA O MODAL DE AJUDA/TUTORIAL"
-                    component={Select}
+                    component={Help}
                     options={{
                         tabBarIcon: () => {
                             return <Feather name="help-circle" size={30} color="#000" />
