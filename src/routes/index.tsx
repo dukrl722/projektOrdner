@@ -8,7 +8,9 @@ import { theme } from '../global/styles/theme';
 import { Select } from '../screens/Select';
 import { Login } from "../screens/Login";
 import { SignUp } from "../screens/SignUp";
+
 import { Home } from "../screens/Home";
+
 
 import { Feather } from '@expo/vector-icons'
 
@@ -27,6 +29,7 @@ export function AuthRoutes() {
                     tabBarActiveTintColor: '#fff',
                     tabBarStyle: theme.tabBar
                 }}>
+
 
                 <Screen
                     name="CHAMA O MODAL DE AJUDA/TUTORIAL"
@@ -69,6 +72,7 @@ export function AuthRoutes() {
                     }}
                 />
        
+
             </Navigator>
         </NavigationContainer>
 
