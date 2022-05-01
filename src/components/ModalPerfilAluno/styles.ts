@@ -9,10 +9,19 @@ export const themes = StyleSheet.create({
         justifyContent: 'space-between',
     },
     modal: {
-        borderRadius: 75,
-        backgroundColor: "#FDFDFD",
-        padding: "15%",
-        width: "75%",
-        height: "75%"
-    }
+        margin: 0,
+        borderBottomLeftRadius: 50,
+        borderBottomRightRadius: 50,
+        padding: 35,
+        alignItems: "center",
+        overflow: 'hidden'
+    },
+    centered: {
+        flex: 1,
+        justifyContent: "flex-start",
+        alignItems: "center",
+        marginTop: 0,
+        overflow: 'hidden',
+        backgroundColor: '#FDFDFD'
+    },
 })
