@@ -1,12 +1,13 @@
 import React from 'react'
-import {View,TouchableHighlight} from 'react-native'
+import {Text} from 'react-native'
+import { RectButton } from "react-native-gesture-handler";
 
 import {themes} from './styles';
 
 export function EditButton() {
     return(
-        <View style={themes.button}>
-            <TouchableHighlight>+</TouchableHighlight>
-        </View>
+        <RectButton style={themes.button}>
+            <Text>+</Text>
+        </RectButton>
     )
 }

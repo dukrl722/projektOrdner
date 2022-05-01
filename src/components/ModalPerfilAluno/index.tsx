@@ -3,7 +3,7 @@ import {View, Modal, Text, KeyboardAvoidingView} from 'react-native';
 
 import { ButtonSave } from '../ButtonSave/index';
 import {EditInput} from '../EditInput/index';
-import {AvatarEdit} from '../AvatarEdit/index';
+import {Profile} from '../Profile/index';
 import {EditButton} from '../EditButton/index';
 import { LinearGradient } from "expo-linear-gradient";
 import { RectButtonProps } from "react-native-gesture-handler";
@@ -20,7 +20,7 @@ export function EditPerfilAluno({ ...rest }: Props) {
             <KeyboardAvoidingView style={themes.centered}>
                 <LinearGradient colors={["#f4f4f4", "#FDFDFD"]}>
                     <KeyboardAvoidingView style={themes.modal}>
-                        <AvatarEdit />
+                        <Profile />
                         <EditButton />
 
                         <EditInput placeholder="Nome completo"/>
