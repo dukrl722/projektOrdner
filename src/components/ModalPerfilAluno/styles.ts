@@ -6,6 +6,13 @@ export const themes = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
+    modal: {
+        borderRadius: 75,
+        backgroundColor: "#FDFDFD",
+        padding: "15%",
+        width: "75%",
+        height: "75%"
+    }
 })

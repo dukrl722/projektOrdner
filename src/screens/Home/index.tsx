@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, Image, FlatList} from 'react-native';
 
 import {RectButton} from "react-native-gesture-handler";
@@ -8,6 +8,8 @@ import { themes } from './styles';
 import { Background } from '../../components/Background';
 import {Profile} from "../../components/Profile";
 import {CardInfo} from "../../components/CardInfo";
+
+// import { EditPerfilAluno } from '../../components/ModalPerfilAluno';
 
 export function Home() {
 
@@ -40,6 +42,16 @@ export function Home() {
                 'ficar bonitinho. Não sei se aqui vai ser a descrição ou o que'
         }
     ];
+    /*
+    const [modalVisivel, setModalVisivel] = useState(false)
+
+    <View>
+        <RectButton onPress={()=>setModalVisivel(!modalVisivel)} style={themes.buttonContainer}>
+            <Text style={themes.textContainer}>Modal Aluno</Text>
+            <EditPerfilAluno visibility={modalVisivel}/>
+        </RectButton>
+    </View>
+    */
 
     return (
         <Background>

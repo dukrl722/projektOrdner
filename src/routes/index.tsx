@@ -8,7 +8,7 @@ import { theme } from '../global/styles/theme';
 import { Select } from '../screens/Select';
 import { Login } from "../screens/Login";
 import { SignUp } from "../screens/SignUp";
-//import { Home } from "../screens/Home";
+import { Home } from "../screens/Home";
 
 import { Feather } from '@expo/vector-icons'
 
@@ -30,7 +30,7 @@ export function AuthRoutes() {
 
                 <Screen
                     name="CHAMA O MODAL DE AJUDA/TUTORIAL"
-                    component={SignUp}
+                    component={Home}
                     options={{
                         tabBarIcon: () => {
                             return <Feather name="help-circle" size={30} color="#000" />
