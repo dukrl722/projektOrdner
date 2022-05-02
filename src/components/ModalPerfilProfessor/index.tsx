@@ -1,0 +1,46 @@
+import React from 'react';
+import {View, Modal, Text, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
+
+import { ButtonSave } from '../ButtonSave/index';
+import {EditInput} from '../EditInput/index';
+import { AvatarEdit } from '../AvatarEdit/index';
+import {EditButton} from '../EditButton/index';
+import { EditField } from '../EditField/index';
+import { LinearGradient } from "expo-linear-gradient";
+import { RectButtonProps } from "react-native-gesture-handler";
+import { DropdownCity } from "../../components/DropdownCity";
+import { DropdownCourse } from "../../components/DropdownCourse";
+
+import {themes} from './styles';
+
+type Props = RectButtonProps & {
+}
+
+export function EditPerfilProfessor({ ...rest }: Props) {
+
+        return(
+            <KeyboardAvoidingView style={themes.centered}>
+                <LinearGradient colors={["#f4f4f4", "#FDFDFD"]}>
+                    <KeyboardAvoidingView style={themes.modal}>
+                        <AvatarEdit urlImage='https://github.com/dukrl722.png' />
+
+                        <EditInput placeholder="Nome completo"/>
+                        <EditInput placeholder="Professor"/>
+                        <DropdownCity></DropdownCity>
+                        <DropdownCourse></DropdownCourse>
+                        <EditField placeholder="Descricão dos trabalhos"/>
+
+                        <Text>Áreas de interesse</Text>
+                        <EditButton />
+
+                        <Text>Projetos</Text>
+                        <EditButton />
+
+                        <TouchableOpacity onPress={() => { alert("Perfil professor atualizado")}}>
+                            <ButtonSave name="Salvar" />
+                        </TouchableOpacity>
+                    </KeyboardAvoidingView>
+                </LinearGradient>
+            </KeyboardAvoidingView>
+        )
+}
