@@ -12,7 +12,14 @@ export const themes = StyleSheet.create({
     edition: {
         flex: 1,
         position: 'absolute',
-        left:15,
+        left:20,
         bottom:-15
+    },
+    avatar: {
+        width: 70,
+        height: 70,
+        borderWidth: 1,
+        borderColor: theme.colors.secondary100,
+        borderRadius: 70,
     }
 })

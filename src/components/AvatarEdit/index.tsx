@@ -1,23 +1,22 @@
 import React from 'react'
-import {View} from 'react-native';
+import {View, Image, TouchableOpacity} from 'react-native';
 
 import {themes} from "./styles";
-import {Avatar} from "../AvatarHeader";
 import {EditButton} from "../EditButton";
 
-/*
+interface Props {
+    urlImage: string
+}
 
-*/
-
-export function AvatarEdit() {
+export function AvatarEdit({urlImage}: Props) {
     return (
         <View style={themes.container}>
 
-            <Avatar urlImage="https://github.com/neom200.png"/>
+            <Image source={{uri: urlImage}} style={themes.avatar} />
 
-            <View style={themes.edition}>
+            <TouchableOpacity style={themes.edition}>
                 <EditButton />
-            </View>
+            </TouchableOpacity>
 
         </View>
     )

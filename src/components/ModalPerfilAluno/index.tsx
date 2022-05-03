@@ -21,7 +21,7 @@ export function EditPerfilAluno({ ...rest }: Props) {
                 <LinearGradient colors={["#f4f4f4", "#FDFDFD"]}>
                     <KeyboardAvoidingView style={themes.modal}>
 
-                        <AvatarEdit />
+                        <AvatarEdit urlImage="https://github.com/neom200.png"/>
 
                         <EditInput placeholder="Nome completo"/>
                         <EditInput placeholder="Aluno"/>

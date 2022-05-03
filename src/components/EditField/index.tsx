@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, TouchableOpacity} from 'react-native'
 import {EditButton} from '../EditButton';
 import {themes} from './styles';
 
@@ -10,10 +10,11 @@ interface Props {
 export function EditField(props: Props) {
     return (
         <View style={themes.container}>
-            <Text>{props.titulo}</Text>
-            <View style={{marginLeft:20}}>
+            <Text style={{width:150, height:50}}>{props.titulo}</Text>
+
+            <TouchableOpacity style={themes.button}>
                 <EditButton />
-            </View>
+            </TouchableOpacity>
         </View>
     )
 }
