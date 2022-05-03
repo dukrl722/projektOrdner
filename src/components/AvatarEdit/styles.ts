@@ -4,14 +4,19 @@ import {theme} from "../../global/styles/theme";
 export const themes = StyleSheet.create({
     container: {
         alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: 22,
+        justifyContent: 'space-between',
+        marginBottom:30,
     },
     avatar: {
-        width: 50,
-        height: 50,
+        width: 70,
+        height: 70,
         borderWidth: 1,
         borderColor: theme.colors.secondary100,
-        borderRadius: 50,
+        borderRadius: 70,
+    },
+    edition: {
+        position:'absolute',
+        top:60,
+        right:20
     }
 });

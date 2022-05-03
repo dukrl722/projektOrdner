@@ -4,7 +4,7 @@ import {View, Modal, Text, KeyboardAvoidingView, TouchableOpacity} from 'react-n
 import { ButtonSave } from '../ButtonSave/index';
 import {EditInput} from '../EditInput/index';
 import { AvatarEdit } from '../AvatarEdit/index';
-import {EditButton} from '../EditButton/index';
+import {FieldAdder} from '../FieldAdder/index';
 import { EditField } from '../EditField/index';
 import { LinearGradient } from "expo-linear-gradient";
 import { RectButtonProps } from "react-native-gesture-handler";
@@ -30,11 +30,8 @@ export function EditPerfilProfessor({ ...rest }: Props) {
                         <DropdownCourse></DropdownCourse>
                         <EditField placeholder="Descricão dos trabalhos"/>
 
-                        <Text>Áreas de interesse</Text>
-                        <EditButton />
-
-                        <Text>Projetos</Text>
-                        <EditButton />
+                        <FieldAdder titulo="Áreas de interesse"/>
+                        <FieldAdder titulo="Projetos"/>
 
                         <TouchableOpacity onPress={() => { alert("Perfil professor atualizado")}}>
                             <ButtonSave name="Salvar" />

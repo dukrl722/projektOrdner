@@ -11,7 +11,7 @@ type Props = TextInputProps & {
 export function EditField({ placeholder, ...rest }: Props) {
     return (
         <View style={themes.container}>
-            <TextInput multiline numberOfLines={10} style={themes.inputs} placeholder={placeholder} {...rest} />
+            <TextInput multiline numberOfLines={20} style={themes.inputs} placeholder={placeholder} {...rest} />
         </View>
     )
 }

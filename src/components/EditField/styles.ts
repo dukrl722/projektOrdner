@@ -5,7 +5,7 @@ import { theme } from "../../global/styles/theme";
 export const themes = StyleSheet.create({
     container: {
         width: 331,
-        height: 48,
+        height: 50,
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 15,
