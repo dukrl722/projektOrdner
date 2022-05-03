@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text} from 'react-native'
+import {Image} from 'react-native'
 import { RectButton } from "react-native-gesture-handler";
 
 import {themes} from './styles';
@@ -7,7 +7,7 @@ import {themes} from './styles';
 export function EditButton() {
     return(
         <RectButton style={themes.button}>
-            <Text>+</Text>
+            <Image source={require('../../assets/image_plus.png')} style={{width:20, height:20}}/>
         </RectButton>
     )
 }

@@ -9,7 +9,7 @@ export const themes = StyleSheet.create({
 		marginBottom: 15,
       	alignItems: 'center',
       	justifyContent: 'center',
-      	borderRadius: 50,
+      	borderRadius: 10,
       	backgroundColor: theme.colors.secondary10,
       	borderColor: theme.colors.secondary30,
      	borderWidth: 1
