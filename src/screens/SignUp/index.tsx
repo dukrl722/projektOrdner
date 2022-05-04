@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, Alert, Button } from 'react-native';
 
 import { styles } from './styles';
 
@@ -14,13 +14,18 @@ import { InputRa } from '../../components/InputRa';
 import { InputPassword } from "../../components/InputPassword";
 import { useNavigation } from '@react-navigation/native';
 
+import auth from '@react-native-firebase/auth';
+
 export function SignUp() {
 
-    const navigation = useNavigation();
+    const [ user, setUser ] = useState<string>('');
+    const [ password, setPassword ] = useState<string>('');
 
-    function handlePress() {
-        //@ts-ignore
-        navigation.navigate('Details');
+    async function handleNewAccount() {
+        auth()
+        .createUserWithEmailAndPassword(user, password)
+        .then(() => console.log('sucesso'))
+        .catch((err) => console.log(err));
     }
 
     return (
@@ -33,12 +38,23 @@ export function SignUp() {
 
                 <View>
                     <View>
-                        <InputRa placeholder="Registro do Aluno" />
-                        <InputPassword confirmPassword={false} placeholder="Senha" />
-                        <InputPassword confirmPassword={true} placeholder="Confirmar Senha" />
+                        <InputRa
+                            placeholder="Registro do Aluno"
+                            value={user}
+                            onChangeText={(value) => setUser(value)}
+                        />
+                        <InputPassword
+                            confirmPassword={false}
+                            placeholder="Senha"
+                            onChangeText={(value) => setPassword(value)}
+                        />
+                        {/* <InputPassword
+                            confirmPassword={true}
+                            placeholder="Confirmar Senha"
+                        /> */}
                     </View>
-
-                    <ButtonLoginSquare name="Inscreva-se" onPress={handlePress} />
+                    <Button title='Inscreva-se' onPress={() => handleNewAccount()} />
+                    {/* <ButtonLoginSquare name="Inscreva-se" onPress={() => console.log('onPress')}/> */}
                 </View>
             </View>
 

@@ -13,12 +13,12 @@ type Props = TextInputProps & {
     confirmPassword: boolean;
 }
 
-export function InputPassword({ placeholder, confirmPassword, ...rest } : Props) {
+export function InputPassword({ placeholder, confirmPassword, onChangeText, ...rest } : Props) {
     return (
         <View style={themes.container}>
             <Image source={confirmPassword ? Key : PadLock} style={themes.image} />
             <LineDivider />
-            <DefaultInput placeholder={placeholder} />
+            <DefaultInput placeholder={placeholder} onChangeText={onChangeText} />
         </View>
     )
 }

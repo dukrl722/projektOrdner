@@ -8,9 +8,9 @@ type Props = RectButtonProps & {
     name: string;
 } 
 
-export function ButtonLoginSquare({ name, ...rest } : Props) {
+export function ButtonLoginSquare({ name, onPress, ...rest } : Props) {
     return (
-        <RectButton style={themes.container} {...rest}>
+        <RectButton style={themes.container} onPress={() => onPress} {...rest}>
             <Text style={themes.textContainer}>{name}</Text>
         </RectButton>
     )
