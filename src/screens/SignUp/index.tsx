@@ -12,8 +12,17 @@ import { ButtonLoginSquare } from '../../components/ButtonLoginSquare';
 
 import { InputRa } from '../../components/InputRa';
 import { InputPassword } from "../../components/InputPassword";
+import { useNavigation } from '@react-navigation/native';
 
 export function SignUp() {
+
+    const navigation = useNavigation();
+
+    function handlePress() {
+        //@ts-ignore
+        navigation.navigate('Details');
+    }
+
     return (
         <Background>
 
@@ -29,10 +38,10 @@ export function SignUp() {
                         <InputPassword confirmPassword={true} placeholder="Confirmar Senha" />
                     </View>
 
-                    <ButtonLoginSquare name="Inscreva-se" />
+                    <ButtonLoginSquare name="Inscreva-se" onPress={handlePress} />
                 </View>
             </View>
 
         </ Background>
     );
-}
+};
