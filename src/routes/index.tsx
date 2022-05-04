@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { SafeAreaView } from 'react-native';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,6 +14,7 @@ import { SignUp } from "../screens/SignUp";
 import { Help } from "../screens/Help";
 
 import { Home } from "../screens/Home";
+import { Details } from '../screens/Details';
 import {FilterModal} from "../components/FilterModal";
 
 
@@ -73,19 +76,21 @@ export function AuthRoutes() {
     }
 
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                    <Stack.Screen 
-                        name='Home'
-                        options={tabSettings}
-                        component={TabNavigator}
-                    />
-                    <Stack.Screen
-                        name='Login'
-                        component={Login}
-                        options={stackSettings}
-                    />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <SafeAreaView style={{ flex: 1 }}>
+            <NavigationContainer>
+                <Stack.Navigator>
+                        <Stack.Screen 
+                            name='Home'
+                            options={tabSettings}
+                            component={TabNavigator}
+                        />
+                        <Stack.Screen
+                            name='Login'
+                            component={Login}
+                            options={stackSettings}
+                        />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </SafeAreaView>
     )
 }

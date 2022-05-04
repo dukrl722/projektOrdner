@@ -12,6 +12,7 @@ import { ButtonLoginSquare } from '../../components/ButtonLoginSquare';
 
 import { InputRa } from '../../components/InputRa';
 import { InputPassword } from "../../components/InputPassword";
+import { useNavigation } from '@react-navigation/native';
 
 import auth from '@react-native-firebase/auth';
 
@@ -59,4 +60,4 @@ export function SignUp() {
 
         </ Background>
     );
-}
+};
