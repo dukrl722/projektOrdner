@@ -10,8 +10,12 @@ import { theme } from '../global/styles/theme';
 import { Select } from '../screens/Select';
 import { Login } from "../screens/Login";
 import { SignUp } from "../screens/SignUp";
+import { Help } from "../screens/Help";
+
 import { Home } from "../screens/Home";
 import { Details } from '../screens/Details';
+import {FilterModal} from "../components/FilterModal";
+
 
 import { Feather } from '@expo/vector-icons'
 
