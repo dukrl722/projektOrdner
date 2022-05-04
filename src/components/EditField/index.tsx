@@ -1,19 +1,17 @@
-import React from 'react'
-import {View, Text} from 'react-native'
-import {EditButton} from '../EditButton';
-import {themes} from './styles';
+import {View, TextInput, TextInputProps} from "react-native";
+import React from "react";
 
-interface Props {
-    titulo: string
+import {themes} from './styles';
+import { theme } from "../../global/styles/theme";
+
+type Props = TextInputProps & {
+    placeholder: string;
 }
 
-export function EditField(props: Props) {
+export function EditField({ placeholder, ...rest }: Props) {
     return (
         <View style={themes.container}>
-            <Text>{props.titulo}</Text>
-            <View style={{marginLeft:20}}>
-                <EditButton />
-            </View>
+            <TextInput multiline numberOfLines={20} style={themes.inputs} placeholder={placeholder} {...rest} />
         </View>
     )
 }
