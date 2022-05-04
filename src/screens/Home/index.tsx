@@ -9,7 +9,6 @@ import { Background } from '../../components/Background';
 import { Profile } from "../../components/Profile";
 import { CardInfo } from "../../components/CardInfo";
 import { FilterModal } from '../../components/FilterModal';
-import { EditPerfilAluno } from '../../components/ModalPerfilAluno';
 import { BottomSheet, BottomSheetRef } from 'react-native-sheet';
 
 export function Home() {
@@ -44,7 +43,6 @@ export function Home() {
         }
     ];
     const bottomSheet = useRef<BottomSheetRef>(null);
-    const bottomSheet2 = useRef<BottomSheetRef>(null);
 
     return (
         <Background>
@@ -59,16 +57,6 @@ export function Home() {
                     <TouchableOpacity onPress={() => bottomSheet.current?.show()}>
                         <RectButton style={themes.buttonContainer}>
                             <Text style={themes.textContainer}>Filtros</Text>
-                        </RectButton>
-                    </TouchableOpacity>
-                </View>
-                <View>
-                    <BottomSheet height={655} ref={bottomSheet2}>
-                        <EditPerfilAluno></EditPerfilAluno>
-                    </BottomSheet>
-                    <TouchableOpacity onPress={() => bottomSheet2.current?.show()}>
-                        <RectButton style={themes.buttonContainer}>
-                            <Text style={themes.textContainer}>Modal Aluno</Text>
                         </RectButton>
                     </TouchableOpacity>
                 </View>

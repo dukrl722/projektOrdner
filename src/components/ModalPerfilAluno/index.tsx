@@ -4,7 +4,6 @@ import {KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import { ButtonSave } from '../ButtonSave/index';
 import {EditInput} from '../EditInput/index';
 import {AvatarEdit} from '../AvatarEdit/index';
-import {EditButton} from '../EditButton/index';
 import {EditField} from '../EditField/index';
 import { LinearGradient } from "expo-linear-gradient";
 import { RectButtonProps } from "react-native-gesture-handler";
