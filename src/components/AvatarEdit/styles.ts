@@ -3,16 +3,20 @@ import {theme} from "../../global/styles/theme";
 
 export const themes = StyleSheet.create({
     container: {
-        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom:30,
-        
+    },
+    avatar: {
+        width: 70,
+        height: 70,
+        borderWidth: 1,
+        borderColor: theme.colors.secondary100,
+        borderRadius: 70,
     },
     edition: {
-        flex: 1,
-        position: 'absolute',
-        left:15,
-        bottom:-15
+        position:'absolute',
+        top:60,
+        right:20
     }
-})
+});

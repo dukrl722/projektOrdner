@@ -2,8 +2,12 @@ import {StyleSheet} from 'react-native';
 
 export const themes = StyleSheet.create({
     button: {
-        justifyContent:'flex-end',
+        flex:1,
+        width: 25,
+        height: 25,
+        borderRadius: 25/2,
+        borderWidth:1,
         borderColor:'black',
-        textAlign:'center'
-    }
+        flexDirection: 'row'
+    },
 })
