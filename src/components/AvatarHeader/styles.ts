@@ -5,7 +5,8 @@ export const themes = StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
-        marginRight: 22
+        marginRight: 22,
+        backgroundColor:'#C4C4C4'
     },
     avatar: {
         width: 50,

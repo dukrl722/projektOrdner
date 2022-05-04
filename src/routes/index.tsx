@@ -8,7 +8,11 @@ import { theme } from '../global/styles/theme';
 import { Select } from '../screens/Select';
 import { Login } from "../screens/Login";
 import { SignUp } from "../screens/SignUp";
+import { Help } from "../screens/Help";
+
 import { Home } from "../screens/Home";
+import {FilterModal} from "../components/FilterModal";
+
 
 import { Feather } from '@expo/vector-icons'
 
@@ -28,9 +32,10 @@ export function AuthRoutes() {
                     tabBarStyle: theme.tabBar
                 }}>
 
+
                 <Screen
                     name="CHAMA O MODAL DE AJUDA/TUTORIAL"
-                    component={SignUp}
+                    component={Help}
                     options={{
                         tabBarIcon: () => {
                             return <Feather name="help-circle" size={30} color="#000" />
@@ -40,7 +45,7 @@ export function AuthRoutes() {
                 />
                 <Screen
                     name="DIFERECIONA PARA A TELA INICIAL"
-                    component={Select}
+                    component={Home}
                     options={{
                         tabBarIcon: () => {
                             return <Feather name="home" size={30} color="#000" />
@@ -69,6 +74,7 @@ export function AuthRoutes() {
                     }}
                 />
        
+
             </Navigator>
         </NavigationContainer>
 
