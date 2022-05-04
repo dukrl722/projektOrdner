@@ -16,8 +16,9 @@ export const theme = {
         menuIconSelected: '#3f236f',
 
         modalBackground: '#FCFCFE',
-        
 
+        menuInputBackground: '#FFFFFF',
+        menuInputBorder: '#7B7290',
     },
 
     fonts: {
@@ -28,8 +29,10 @@ export const theme = {
 
     tabBar: {
         backgroundColor: '#DADADA',
-        paddingBottom: 14,                        
+        paddingBottom: 14,
         height: 70,
         alignItems: 'center',
-    }
+    },
+
+
 };
