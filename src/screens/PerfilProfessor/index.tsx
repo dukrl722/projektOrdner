@@ -34,7 +34,7 @@ export function PerfilProfessor() {
 
                 <View style={styles.container3}>
                     <BodyProfessorProfile 
-                    description='Aqui vai a descrição que o professor vai colocar, dando um puta resumo do que ele faz e sei lá mais o que. Aqui vai a descrição que o professor vai colocar, dando um puta resumo do que ele faz e sei lá mais o que.'
+                    description='Aqui vai a descrição que o professor vai colocar.'
                     areaWork='Áreas trabalhadas'
                     projectWork='Projetos'
                     area='Cursos de Coach'

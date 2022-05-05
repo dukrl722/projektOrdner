@@ -12,6 +12,9 @@ import { Select } from '../screens/Select';
 import { Login } from "../screens/Login";
 import { SignUp } from "../screens/SignUp";
 import { Help } from "../screens/Help";
+import { PerfilAluno } from '../screens/PerfilAluno';
+import { PerfilProfessor } from '../screens/PerfilProfessor';
+import { Atalhos } from '../screens/Atalhos';
 
 import { Home } from "../screens/Home";
 import { Details } from '../screens/Details';
@@ -65,12 +68,21 @@ export function AuthRoutes() {
                     }}
                 />
                 <Tab.Screen
-                    name='Select'
-                    component={Select}
+                    name='Details'
+                    component={Details}
                     options={{
                         tabBarIcon: ({ focused }) => <Feather name='user' size={30} color={focused ? '#2c9cf7' : 'gray'} />,
                     }}
                 />
+                
+                <Tab.Screen
+                    name = 'Help'
+                    component= {Help}
+                    options={{
+                        tabBarIcon: ({ focused }) => <Feather name='help-circle' size={30} color={focused ? '#2c9cf7' : 'gray'} />,
+                    }}
+                /> 
+
             </Tab.Navigator>
         )
     }
@@ -89,6 +101,21 @@ export function AuthRoutes() {
                             component={Login}
                             options={stackSettings}
                         />
+                        <Stack.Screen
+                            name = 'PerfilAluno'
+                            options={stackSettings}
+                            component= {PerfilAluno}
+                         /> 
+                         <Stack.Screen
+                            name = 'PerfilProfessor'
+                            options={stackSettings}
+                            component= {PerfilProfessor}
+                         /> 
+                         <Stack.Screen
+                            name = 'Atalhos'
+                            options={stackSettings}
+                            component= {Atalhos}
+                         /> 
                 </Stack.Navigator>
             </NavigationContainer>
         </SafeAreaView>
