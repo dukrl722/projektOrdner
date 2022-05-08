@@ -5,7 +5,7 @@ type Props = TextInputProps & {
     placeholder: string;
 }
 
-export function DefaultInput({ placeholder, ...rest }: Props) {
+export function DefaultInput({placeholder, ...rest}: Props) {
     return (
         <TextInput
             placeholder={placeholder}

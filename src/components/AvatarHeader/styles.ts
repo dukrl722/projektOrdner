@@ -6,7 +6,6 @@ export const themes = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 22,
-        backgroundColor:'#C4C4C4'
     },
     avatar: {
         width: 50,

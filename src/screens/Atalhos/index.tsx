@@ -7,9 +7,9 @@ import { themes } from './styles';
 
 import { Background } from '../../components/Background';
 import { Profile } from "../../components/Profile";
-import { FilterModal } from '../../components/FilterModal';
 import { EditPerfilProfessor } from '../../components/ModalPerfilProfessor';
 import { EditPerfilAluno } from '../../components/ModalPerfilAluno';
+
 import { BottomSheet, BottomSheetRef } from 'react-native-sheet';
 import { useNavigation } from '@react-navigation/native';
 

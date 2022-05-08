@@ -11,10 +11,9 @@ interface Props {
 export function FieldAdder({titulo}: Props) {
     return (
         <View style={themes.container}>
-            <Text style={{width:150, height:50}}>{titulo}</Text>
-
+            <Text style={themes.text}>{titulo}</Text>
             <TouchableOpacity style={themes.button}>
-                <EditButton />
+                <EditButton/>
             </TouchableOpacity>
         </View>
     )

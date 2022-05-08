@@ -24,7 +24,7 @@ export function SignUp() {
     async function handleNewAccount() {
         auth()
         .createUserWithEmailAndPassword(user, password)
-        .then(() => console.log('sucesso'))
+        .then(() => console.log('success'))
         .catch((err) => console.log(err));
     }
 
@@ -54,7 +54,6 @@ export function SignUp() {
                         /> */}
                     </View>
                     <Button title='Inscreva-se' onPress={() => handleNewAccount()} />
-                    {/* <ButtonLoginSquare name="Inscreva-se" onPress={() => console.log('onPress')}/> */}
                 </View>
             </View>
 

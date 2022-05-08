@@ -1,41 +1,43 @@
 import React from 'react';
 import {KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 
-import { ButtonSave } from '../ButtonSave/index';
+import {ButtonSave} from '../ButtonSave/index';
 import {EditInput} from '../EditInput/index';
 import {AvatarEdit} from '../AvatarEdit/index';
 import {EditButton} from '../EditButton/index';
 import {EditField} from '../EditField/index';
-import { LinearGradient } from "expo-linear-gradient";
-import { RectButtonProps } from "react-native-gesture-handler";
+import {LinearGradient} from "expo-linear-gradient";
+import {RectButtonProps} from "react-native-gesture-handler";
 
 import {themes} from './styles';
+import {theme} from "../../global/styles/theme";
 
-type Props = RectButtonProps & {
-}
+export function EditPerfilAluno() {
 
-export function EditPerfilAluno({ ...rest }: Props) {
+    const {primary, secondary} = theme.colorFilter;
 
-        return(
-            <KeyboardAvoidingView style={themes.centered}>
-                <LinearGradient colors={["#f4f4f4", "#FDFDFD"]}>
-                    <KeyboardAvoidingView style={themes.modal}>
+    return (
+        <KeyboardAvoidingView style={themes.centered}>
+            <LinearGradient colors={[primary, secondary]}>
+                <KeyboardAvoidingView style={themes.modal}>
 
-                        <AvatarEdit />
+                    <AvatarEdit urlImage={''}/>
 
-                        <EditInput placeholder="Nome completo"/>
-                        <EditInput placeholder="Aluno"/>
-                        <EditInput placeholder="Campus"/>
-                        <EditInput placeholder="Curso"/>
+                    <EditInput placeholder="Nome completo"/>
+                    <EditInput placeholder="Aluno"/>
+                    <EditInput placeholder="Campus"/>
+                    <EditInput placeholder="Curso"/>
 
-                        <EditField titulo="Areas de interesse"/>
+                    <EditField placeholder="Areas de interesse"/>
 
-                        <TouchableOpacity onPress={() => { alert("DADOS ALTERADOS COM SUCESSO")}}>
-                            <ButtonSave name="Salvar" />
-                        </TouchableOpacity>
-                        
-                    </KeyboardAvoidingView>
-                </LinearGradient>
-            </KeyboardAvoidingView>
-        )
+                    <TouchableOpacity onPress={() => {
+                        alert("DADOS ALTERADOS COM SUCESSO")
+                    }}>
+                        <ButtonSave name="Salvar"/>
+                    </TouchableOpacity>
+
+                </KeyboardAvoidingView>
+            </LinearGradient>
+        </KeyboardAvoidingView>
+    )
 }

@@ -23,8 +23,5 @@ export const themes = StyleSheet.create({
         marginTop: 0,
         overflow: 'hidden',
         backgroundColor: '#FDFDFD'
-    },
-    writeField: {
-        
     }
 })

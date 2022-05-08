@@ -10,7 +10,6 @@ import { Profile } from "../../components/Profile";
 import { CardInfo } from "../../components/CardInfo";
 import { FilterModal } from '../../components/FilterModal';
 import { BottomSheet, BottomSheetRef } from 'react-native-sheet';
-import { useNavigation } from '@react-navigation/native';
 
 export function Home() {
 
@@ -43,11 +42,9 @@ export function Home() {
                 'ficar bonitinho. Não sei se aqui vai ser a descrição ou o que'
         }
     ];
+
     const bottomSheet = useRef<BottomSheetRef>(null);
-    const bottomSheet2 = useRef<BottomSheetRef>(null);
 
-
-    const navigation = useNavigation();
     return (
         <Background>
             <View style={themes.container}>
@@ -56,20 +53,11 @@ export function Home() {
                 </View>
                 <View>
                     <BottomSheet height={655} ref={bottomSheet}>
-                        <FilterModal></FilterModal>
+                        <FilterModal />
                     </BottomSheet>
                     <TouchableOpacity onPress={() => bottomSheet.current?.show()}>
                         <RectButton style={themes.buttonContainer}>
                             <Text style={themes.textContainer}>Filtros</Text>
-                        </RectButton>
-                    </TouchableOpacity>
-                </View>
-                <View>
-                    <BottomSheet height={655} ref={bottomSheet2}>
-                    </BottomSheet>
-                    <TouchableOpacity onPress={() => navigation.navigate('Atalhos')}>
-                        <RectButton style={themes.buttonContainer}>
-                            <Text style={themes.textContainer}>Atalhos</Text>
                         </RectButton>
                     </TouchableOpacity>
                 </View>
