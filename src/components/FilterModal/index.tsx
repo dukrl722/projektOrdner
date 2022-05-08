@@ -9,13 +9,17 @@ import {DropdownCourse} from "../../components/DropdownCourse";
 import {ButtonLoginSquare} from '../../components/ButtonLoginSquare';
 import {LinearGradient} from "expo-linear-gradient";
 import {Feather} from '@expo/vector-icons'
+import {theme} from "../../global/styles/theme";
 
 export function FilterModal() {
     const [modalVisible, setModalVisible] = useState(false);
+
+    const { primary, secondary } = theme.colorFilter;
+
     return (
 
         <KeyboardAvoidingView style={styles.centeredView}>
-            <LinearGradient colors={["#f4f4f4", "#FDFDFD"]}>
+            <LinearGradient colors={[primary, secondary]}>
                 <KeyboardAvoidingView style={styles.modalView}>
 
                     <InputKeyWord placeholder="Palavra-chave"/>
