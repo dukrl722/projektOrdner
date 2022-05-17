@@ -7,7 +7,6 @@ import { styles } from './styles';
 import IconProject from '../../assets/icon.png';
 
 import { Background } from '../../components/Background';
-
 import { ButtonLogin } from '../../components/ButtonLogin';
 import { ButtonRegister } from '../../components/ButtonRegister';
 

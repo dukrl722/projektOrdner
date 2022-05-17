@@ -19,17 +19,16 @@ type Props = {
     data: CardInfoProps;
 }
 
-export function CardInfo({ data } : Props) {
+export function CardInfo({data}: Props) {
 
-    const { secondary10, secondary20 } = theme.colors;
+    const {secondary10, secondary20} = theme.colors;
 
     return (
 
-        <LinearGradient colors={[secondary10, secondary20]} style={themes.container} >
+        <LinearGradient colors={[secondary10, secondary20]} style={themes.container}>
             <View>
-
                 <View style={themes.content}>
-                    <Image source={{uri: data.image}} style={themes.profilePicture} />
+                    <Image source={{uri: data.image}} style={themes.profilePicture}/>
                     <View style={themes.infoUser}>
                         <Text style={themes.name}>
                             {data.name}
@@ -44,7 +43,6 @@ export function CardInfo({ data } : Props) {
                         {data.description}
                     </Text>
                 </View>
-
             </View>
         </LinearGradient>
     )

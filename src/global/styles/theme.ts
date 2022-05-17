@@ -21,6 +21,11 @@ export const theme = {
         menuInputBorder: '#7B7290',
     },
 
+    colorFilter: {
+        primary: '#f4f4f4',
+        secondary: '#FDFDFD'
+    },
+
     fonts: {
         title700: 'Roboto_700Bold',
         text400: 'Roboto_400Regular',
@@ -33,6 +38,4 @@ export const theme = {
         height: 70,
         alignItems: 'center',
     },
-
-
 };

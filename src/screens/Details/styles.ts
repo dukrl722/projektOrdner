@@ -1,10 +1,12 @@
 import { ColorPropType, StyleSheet } from 'react-native';
 import { theme } from '../../global/styles/theme';
+import {getStatusBarHeight} from "react-native-iphone-x-helper";
 
 export const themes = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 30
+        paddingHorizontal: 30,
+        top: getStatusBarHeight() + 20
     },
     image: {
         height: 250,

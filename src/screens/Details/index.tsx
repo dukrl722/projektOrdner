@@ -47,8 +47,6 @@ export function Details() {
         ]
     }
 
-
-
     const [ user, setUser ] = useState({
         avatar: '',
         name: '',

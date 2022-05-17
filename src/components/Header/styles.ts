@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { theme } from '../../global/styles/theme';
+import {getStatusBarHeight} from "react-native-iphone-x-helper";
 
 export const themes = StyleSheet.create({
     container: {
@@ -7,6 +8,7 @@ export const themes = StyleSheet.create({
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
+        top: getStatusBarHeight() + 10
     },
     text: {
         color: theme.colors.secondary90,

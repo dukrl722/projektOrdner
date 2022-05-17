@@ -13,7 +13,6 @@ export const themes = StyleSheet.create({
         backgroundColor: theme.colors.menuInputBackground,
         borderColor: theme.colors.menuInputBorder,
         borderWidth: 1
-
     },
     inputs: {
         color: theme.colors.menuInputBorder,

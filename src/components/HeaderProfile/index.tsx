@@ -13,17 +13,16 @@ type Props = {
     cloakProfessor: boolean;
 }
 
-
-
 export function HeaderProfile({ name, campus, image, cloakProfessor, ...rest }: Props) {
+
     const data1 = [theme.colors.secondary80, theme.colors.secondary100];
     const data2 = [theme.colors.secondary40, theme.colors.secondary70];
+
     return (
         <View style={styles.container}>
             <View style={styles.cloak}>
                 <LinearGradient
                     colors={cloakProfessor ? data1 : data2}
-
                     style={styles.container}
                 />
                 <Image source={image} resizeMode="stretch" style={styles.image} />

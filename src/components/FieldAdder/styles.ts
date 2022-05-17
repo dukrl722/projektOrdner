@@ -4,9 +4,13 @@ export const themes = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'row',
-        alignItems:'center'
+        alignItems: 'center'
     },
     button: {
         marginLeft: 150,
+    },
+    text: {
+        width: 150,
+        height: 50
     }
 })

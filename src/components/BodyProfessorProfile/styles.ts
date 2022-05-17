@@ -9,14 +9,15 @@ export const styles = StyleSheet.create({
     name: {
         fontSize: 20,
         fontFamily: theme.fonts.title700,
-        color: theme.colors.secondary90
+        color: theme.colors.secondary90,
+        marginTop: 20
     },
 
     contentArea: {
         left: 33,
         top: 200
     },
-
+ 
     description: {
         fontSize: 16,
         marginTop: 16,
