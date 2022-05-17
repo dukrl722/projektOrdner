@@ -53,7 +53,7 @@ export function Home() {
                 </View>
                 <View>
                     <BottomSheet height={655} ref={bottomSheet}>
-                        <FilterModal />
+                        <FilterModal ></FilterModal>
                     </BottomSheet>
                     <TouchableOpacity onPress={() => bottomSheet.current?.show()}>
                         <RectButton style={themes.buttonContainer}>
