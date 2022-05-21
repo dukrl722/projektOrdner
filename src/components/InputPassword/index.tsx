@@ -18,7 +18,7 @@ export function InputPassword({ placeholder, confirmPassword, onChangeText, ...r
         <View style={themes.container}>
             <Image source={confirmPassword ? Key : PadLock} style={themes.image} />
             <LineDivider />
-            <DefaultInput placeholder={placeholder} onChangeText={onChangeText} />
+            <DefaultInput placeholder={placeholder} onChangeText={onChangeText} secureTextEntry />
         </View>
     )
 }

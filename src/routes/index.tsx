@@ -1,24 +1,22 @@
+//@ts-nocheck
 import React from 'react';
 
-import {SafeAreaView} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
+import { theme } from '../global/styles/theme';
 
-import {theme} from '../global/styles/theme';
+import { Login } from "../screens/Login";
+import { SignUp } from "../screens/SignUp";
+import { Help } from "../screens/Help";
+import { PerfilAluno } from '../screens/PerfilAluno';
+import { PerfilProfessor } from '../screens/PerfilProfessor';
+import { Atalhos } from '../screens/Atalhos';
+import { Home } from "../screens/Home";
+import { Details } from '../screens/Details';
 
-import {Select} from '../screens/Select';
-import {Login} from "../screens/Login";
-import {SignUp} from "../screens/SignUp";
-import {Help} from "../screens/Help";
-import {PerfilAluno} from '../screens/PerfilAluno';
-import {PerfilProfessor} from '../screens/PerfilProfessor';
-import {Atalhos} from '../screens/Atalhos';
-import {Home} from "../screens/Home";
-import {Details} from '../screens/Details';
-
-import {Feather} from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -100,36 +98,39 @@ export function AuthRoutes() {
     }
 
     return (
-        <SafeAreaView>
-            <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen
-                        name='Home'
-                        options={tabSettings}
-                        component={TabNavigator}
-                    />
-                    <Stack.Screen
-                        name='Login'
-                        component={Login}
-                        options={stackSettings}
-                    />
-                    <Stack.Screen
-                        name='PerfilAluno'
-                        options={stackSettings}
-                        component={PerfilAluno}
-                    />
-                    <Stack.Screen
-                        name='PerfilProfessor'
-                        options={stackSettings}
-                        component={PerfilProfessor}
-                    />
-                    <Stack.Screen
-                        name='Atalhos'
-                        options={stackSettings}
-                        component={Atalhos}
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
-        </SafeAreaView>
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen
+                    name='Login'
+                    component={Login}
+                    options={stackSettings}
+                />
+                <Stack.Screen
+                    name='SignUp'
+                    component={SignUp}
+                    options={stackSettings}
+                />
+                <Stack.Screen
+                    name='Home'
+                    options={tabSettings}
+                    component={TabNavigator}
+                />
+                <Stack.Screen
+                    name='PerfilAluno'
+                    options={stackSettings}
+                    component={PerfilAluno}
+                />
+                <Stack.Screen
+                    name='PerfilProfessor'
+                    options={stackSettings}
+                    component={PerfilProfessor}
+                />
+                <Stack.Screen
+                    name='Atalhos'
+                    options={stackSettings}
+                    component={Atalhos}
+                />
+            </Stack.Navigator>
+        </NavigationContainer>
     )
 }
