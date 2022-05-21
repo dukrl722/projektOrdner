@@ -1,6 +1,7 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "checkJs": false,
     "strict": true,
       "allowSyntheticDefaultImports": true
   }
