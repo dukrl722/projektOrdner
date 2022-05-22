@@ -8,6 +8,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {theme} from '../global/styles/theme';
 
 import {Login} from "../screens/Login";
+import {SignUp} from '../screens/SignUp';
 import {Help} from "../screens/Help";
 import {PerfilAluno} from '../screens/PerfilAluno';
 import {PerfilProfessor} from '../screens/PerfilProfessor';
@@ -101,6 +102,11 @@ export function AuthRoutes() {
                 <Stack.Screen
                     name='Login'
                     component={Login}
+                    options={stackSettings}
+                />
+                <Stack.Screen
+                    name='SignUp'
+                    component={SignUp}
                     options={stackSettings}
                 />
                 <Stack.Screen

@@ -1590,7 +1590,7 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
-"@react-native-firebase/app@^14.8.0":
+"@react-native-firebase/app@^14.9.4":
   version "14.9.4"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-14.9.4.tgz#ba3f0a2913e0b5cbefe06bc814dd4aa2cab85814"
   integrity sha512-/yWRROW1XUz9cOia85XStX/EOZGOy5LZ3mW2+moszqK+slB5TPa4/SbMgUmc7erZ8UyQxyRxq/03PhmVaSCpxw==

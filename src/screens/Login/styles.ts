@@ -33,5 +33,10 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         fontFamily: theme.fonts.title700,
         color: theme.colors.secondary90
+    },
+    registerContainer: {
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });

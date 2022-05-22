@@ -1,5 +1,6 @@
-import React from 'react';
-import { View, Image, Text } from 'react-native';
+//@ts-nocheck
+import React, { useState } from 'react';
+import { View, Image, Text, Button, Alert } from 'react-native';
 
 import {useNavigation} from "@react-navigation/native";
 
@@ -10,14 +11,19 @@ import IconProject from '../../assets/icon.png';
 import { ButtonLoginSquare } from '../../components/ButtonLoginSquare';
 import { InputRa } from '../../components/InputRa';
 import { InputPassword } from "../../components/InputPassword";
+import auth from '@react-native-firebase/auth';
 
 export function Login() {
+    const [ user, setUser ] = useState();
+    const [ password, setPassword ] = useState();
 
     const navigation = useNavigation();
 
     function handleAccess() {
-        // @ts-ignore
-        navigation.navigate('Home');
+        auth()
+            .signInWithEmailAndPassword(user, password)
+            .then(() => navigation.navigate('Home'))
+            .catch(() => Alert.alert('Nome ou senha inválido!'));            
     }
 
     return (
@@ -27,10 +33,13 @@ export function Login() {
             </View>
             <View>
                 <View>
-                    <InputRa placeholder="Registro do Aluno" />
-                    <InputPassword confirmPassword={false} placeholder="Senha" />
+                    <InputRa placeholder="Usuário" onChangeText={(e) => setUser(e)}/>
+                    <InputPassword secureTextEntry confirmPassword={false} placeholder="Senha" onChangeText={(e) => setPassword(e)} />
                 </View>
-                <ButtonLoginSquare name="Entrar" onPress={handleAccess} />
+                <ButtonLoginSquare disabled={!user || !password} name="Entrar" onPress={handleAccess} />
+                <View style={styles.registerContainer}>
+                    <Text style={{ textAlign: 'center' }} onPress={() => navigation.navigate('SignUp')}>Registrar-se</Text>
+                </View>
             </View>
         </View>
     );
