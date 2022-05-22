@@ -43,8 +43,7 @@ export function SignUp() {
                         placeholder="Nome de Usuário"
                         value={user}
                         onChangeText={(value) => setUser(value)}
-                    />
-                    <DropdownUserType placeholder="Eu sou?"/>
+                    />                  
                     <InputPassword
                         confirmPassword={false}
                         placeholder="Senha"
@@ -54,6 +53,7 @@ export function SignUp() {
                         confirmPassword={true}
                         placeholder="Confirmar Senha"
                     />
+                     <DropdownUserType placeholder="Eu sou?"/>
                 </View>
                 <Button
                     title='Inscreva-se'
