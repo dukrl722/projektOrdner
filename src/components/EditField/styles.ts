@@ -24,4 +24,10 @@ export const themes = StyleSheet.create({
         fontSize: 16,
         paddingLeft: 16
     },
+    lista: {
+        top: 100,
+        right: 100,
+        borderWidth: 1,
+        borderColor: 'black'
+    }
 });

@@ -13,6 +13,11 @@ interface Props {
 }
 
 export function EditField({ placeholder, ...rest }: Props) {
+    
+    const data = [
+        {'key': 1},
+        {'key': 2}
+    ]
 
     const bottomsheet = useRef<BottomSheetRef>(null);
 
@@ -27,9 +32,15 @@ export function EditField({ placeholder, ...rest }: Props) {
             </TouchableOpacity>
 
             <BottomSheet height={655} ref={bottomsheet}>
-                <AreasInteresse visivel={true}></AreasInteresse>
+                <AreasInteresse dado={data} visivel={true}></AreasInteresse>
             </BottomSheet> 
             
+            <FlatList
+                style={themes.lista} 
+                data={data}
+                renderItem={({item}) => <Text>{item.key}</Text>}
+            />
+
         </View>
     )
 }
