@@ -9,6 +9,7 @@ import IconProject from '../../assets/icon.png';
 import { InputRa } from '../../components/InputRa';
 import { InputPassword } from "../../components/InputPassword";
 import { useNavigation } from '@react-navigation/native';
+import { DropdownUserType } from "../../components/DropdownUserType";
 
 import auth from '@react-native-firebase/auth';
 
@@ -39,10 +40,11 @@ export function SignUp() {
             <View>
                 <View>
                     <InputRa
-                        placeholder="Registro do Aluno"
+                        placeholder="Nome de Usuário"
                         value={user}
                         onChangeText={(value) => setUser(value)}
                     />
+                    <DropdownUserType placeholder="Eu sou?"/>
                     <InputPassword
                         confirmPassword={false}
                         placeholder="Senha"
