@@ -1,21 +1,35 @@
-import {View, TextInput, TextInputProps} from "react-native";
-import React from "react";
+import {View, Text, TouchableOpacity, Image, FlatList} from "react-native";
+import React, { useRef } from "react";
+import {useState} from 'react';
+import { BottomSheet, BottomSheetRef } from 'react-native-sheet';
+
+import { AreasInteresse } from '../AreasInteresse';
+// <AreasInteresse data="wwwwwwww" visivel={ligado}/>
 
 import {themes} from './styles';
 
-type Props = TextInputProps & {
-    placeholder: string;
+interface Props {
+    placeholder: string
 }
 
 export function EditField({ placeholder, ...rest }: Props) {
+
+    const bottomsheet = useRef<BottomSheetRef>(null);
+
     return (
         <View style={themes.container}>
-            <TextInput
-                multiline
-                numberOfLines={20}
-                style={themes.inputs}
-                placeholder={placeholder}
-                {...rest} />
+            <Text style={themes.inputs} >
+                Areas de Interesse
+            </Text>
+
+            <TouchableOpacity onPress={() => bottomsheet.current?.show()} style={themes.avatar}>
+                <Image source={require('../../assets/image_plus.png')}/>
+            </TouchableOpacity>
+
+            <BottomSheet height={655} ref={bottomsheet}>
+                <AreasInteresse visivel={true}></AreasInteresse>
+            </BottomSheet> 
+            
         </View>
     )
 }

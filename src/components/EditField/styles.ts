@@ -15,6 +15,9 @@ export const themes = StyleSheet.create({
         borderWidth: 1
 
     },
+    avatar: {
+        left: 120,
+    },
     inputs: {
         color: theme.colors.menuInputBorder,
         fontFamily: theme.fonts.text400,
