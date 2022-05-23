@@ -25,9 +25,8 @@ export const themes = StyleSheet.create({
         paddingLeft: 16
     },
     lista: {
-        top: 100,
-        right: 100,
-        borderWidth: 1,
+        marginTop:10,
+        borderWidth: 2,
         borderColor: 'black'
     }
 });

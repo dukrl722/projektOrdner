@@ -1,5 +1,5 @@
 import React from 'react';
-import {KeyboardAvoidingView, TouchableOpacity} from 'react-native';
+import {KeyboardAvoidingView, TouchableOpacity, FlatList} from 'react-native';
 
 import {ButtonSave} from '../ButtonSave/index';
 import {EditInput} from '../EditInput/index';
@@ -7,12 +7,19 @@ import {AvatarEdit} from '../AvatarEdit/index';
 // import {EditButton} from '../EditButton/index';
 import {EditField} from '../EditField/index';
 import {LinearGradient} from "expo-linear-gradient";
+import { AreaInteresse } from '../AreaInteresse';
 // import {RectButtonProps} from "react-native-gesture-handler";
 
 import {themes} from './styles';
 import {theme} from "../../global/styles/theme";
 
 export function EditPerfilAluno() {
+
+    const data = [
+        {'key':'Matematica'},
+        {'key':'Desenvolvimento Web'},
+        {'key':'Vadiar'}
+    ]
 
     const {primary, secondary} = theme.colorFilter;
 
@@ -29,6 +36,12 @@ export function EditPerfilAluno() {
                     <EditInput placeholder="Curso"/>
 
                     <EditField placeholder="Areas de interesse"/>
+
+                    <FlatList
+                        style={themes.list}
+                        data={data}
+                        renderItem={({item}) => <AreaInteresse dado={item['key']}/>}
+                    />
 
                     <TouchableOpacity onPress={() => {
                         alert("DADOS ALTERADOS COM SUCESSO")

@@ -24,4 +24,10 @@ export const themes = StyleSheet.create({
         overflow: 'hidden',
         backgroundColor: '#FDFDFD'
     },
+    list: {
+        alignContent:'space-between',
+        borderWidth:1,
+        paddingBottom:350,
+        paddingRight:200,
+    }
 })
