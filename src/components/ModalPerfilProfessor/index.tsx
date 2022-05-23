@@ -26,7 +26,6 @@ export function EditPerfilProfessor({...rest}: Props) {
                     <AvatarEdit urlImage='https://github.com/dukrl722.png'/>
 
                     <EditInput placeholder="Nome completo"/>
-                    <EditInput placeholder="Professor"/>
                     <DropdownCity/>
                     <DropdownCourse/>
                     <EditField placeholder="Descricão dos trabalhos"/>
