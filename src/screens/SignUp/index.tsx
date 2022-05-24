@@ -1,6 +1,6 @@
 //@ts-nocheck
 import React, { useState } from 'react';
-import { View, Text, Image, Alert, Button } from 'react-native';
+import { View, Image, Alert, Button } from 'react-native';
 
 import { styles } from './styles';
 
@@ -13,6 +13,7 @@ import { ButtonLoginSquare } from '../../components/ButtonLoginSquare';
 import { InputRa } from '../../components/InputRa';
 import { InputPassword } from "../../components/InputPassword";
 import { useNavigation } from '@react-navigation/native';
+import { DropdownUserType } from "../../components/DropdownUserType";
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -65,13 +66,15 @@ export function SignUp() {
                         placeholder="Senha"
                         onChangeText={(value) => setPassword(value)}
                     />
-                    {/* <InputPassword
+                    <InputPassword
+                        secureTextEntry={true}
                         confirmPassword={true}
                         placeholder="Confirmar Senha"
-                    /> */}
+                    />
+                     <DropdownUserType placeholder="Eu sou?"/>
                 </View>
                 <Button
-                    title='Inscrever-se'
+                    title='Inscreva-se'
                     disabled={!user || !password}
                     onPress={() => handleNewAccount()}
                 />

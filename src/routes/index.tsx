@@ -1,21 +1,22 @@
 //@ts-nocheck
 import React from 'react';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import {theme} from '../global/styles/theme';
+import { theme } from '../global/styles/theme';
 
-import {Login} from "../screens/Login";
-import {SignUp} from '../screens/SignUp';
-import {Help} from "../screens/Help";
-import {PerfilAluno} from '../screens/PerfilAluno';
-import {PerfilProfessor} from '../screens/PerfilProfessor';
-import {Home} from "../screens/Home";
-import {Details} from '../screens/Details';
+import { Login } from "../screens/Login";
+import { SignUp } from "../screens/SignUp";
+import { Help } from "../screens/Help";
+import { PerfilAluno } from '../screens/PerfilAluno';
+import { PerfilProfessor } from '../screens/PerfilProfessor';
+import { Atalhos } from '../screens/Atalhos';
+import { Home } from "../screens/Home";
+import { Details } from '../screens/Details';
 
-import {Feather} from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

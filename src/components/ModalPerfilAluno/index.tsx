@@ -24,7 +24,6 @@ export function EditPerfilAluno() {
                     <AvatarEdit urlImage={''}/>
 
                     <EditInput placeholder="Nome completo"/>
-                    <EditInput placeholder="Aluno"/>
                     <EditInput placeholder="Campus"/>
                     <EditInput placeholder="Curso"/>
 
