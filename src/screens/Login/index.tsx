@@ -11,6 +11,7 @@ import IconProject from '../../assets/icon.png';
 import { ButtonLoginSquare } from '../../components/ButtonLoginSquare';
 import { InputRa } from '../../components/InputRa';
 import { InputPassword } from "../../components/InputPassword";
+
 import auth from '@react-native-firebase/auth';
 
 export function Login() {
@@ -23,7 +24,7 @@ export function Login() {
         auth()
             .signInWithEmailAndPassword(user, password)
             .then(() => navigation.navigate('Home'))
-            .catch(() => Alert.alert('Nome ou senha inválido!'));            
+            .catch(() => Alert.alert('Nome ou senha inválido!'));      
     }
 
     return (

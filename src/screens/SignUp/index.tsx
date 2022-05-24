@@ -15,6 +15,7 @@ import { InputPassword } from "../../components/InputPassword";
 import { useNavigation } from '@react-navigation/native';
 
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 export function SignUp() {
 
@@ -26,9 +27,21 @@ export function SignUp() {
     function handleNewAccount() {
         auth()
             .createUserWithEmailAndPassword(user, password)
-            .then(() => navigation.navigate('Home'))
+            .then((data) => {
+                const { uid:userId } = data.user;
+
+                firestore()
+                    .collection('user')
+                    .add({
+                        id: userId
+                    });
+                
+                navigation.navigate('Home');
+            })
             .catch((err) => {
                 console.log(err);
+                //TODO - tratar o erro conforme a chave de erro que retorna do firebase
+                // exemplo: if (err = 'auth/invalid-email') { Alert.alert('Endereço de email inválido!'); }
                 Alert.alert('Ocorreu um erro, tente novamente!');
             });
     }
