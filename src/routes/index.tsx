@@ -125,11 +125,6 @@ export function AuthRoutes() {
                     options={stackSettings}
                     component={PerfilProfessor}
                 />
-                <Stack.Screen
-                    name='Atalhos'
-                    options={stackSettings}
-                    component={Atalhos}
-                />
             </Stack.Navigator>
         </NavigationContainer>
     )

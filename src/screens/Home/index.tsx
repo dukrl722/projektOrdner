@@ -46,29 +46,27 @@ export function Home() {
     const bottomSheet = useRef<BottomSheetRef>(null);
 
     return (
-        <Background>
-            <View style={themes.container}>
-                <View style={themes.header}>
-                    <Profile />
-                </View>
-                <View>
-                    <BottomSheet height={655} ref={bottomSheet}>
-                        <FilterModal ></FilterModal>
-                    </BottomSheet>
-                    <TouchableOpacity onPress={() => bottomSheet.current?.show()}>
-                        <RectButton style={themes.buttonContainer}>
-                            <Text style={themes.textContainer}>Filtros</Text>
-                        </RectButton>
-                    </TouchableOpacity>
-                </View>
-                <FlatList
-                    data={data}
-                    keyExtractor={item => item.id}
-                    renderItem={({ item }) => (
-                        <CardInfo data={item} />
-                    )}
-                />
+        <View style={themes.container}>
+            <View style={themes.header}>
+                <Profile />
             </View>
-        </ Background>
+            <View>
+                <BottomSheet height={655} ref={bottomSheet}>
+                    <FilterModal ></FilterModal>
+                </BottomSheet>
+                <TouchableOpacity onPress={() => bottomSheet.current?.show()}>
+                    <RectButton style={themes.buttonContainer}>
+                        <Text style={themes.textContainer}>Filtros</Text>
+                    </RectButton>
+                </TouchableOpacity>
+            </View>
+            <FlatList
+                data={data}
+                keyExtractor={item => item.id}
+                renderItem={({ item }) => (
+                    <CardInfo data={item} />
+                )}
+            />
+        </View>
     );
 }

@@ -1,10 +1,11 @@
 {
   "name": "projektOrdner",
   "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start --dev-client",
+    "start": "expo start",
     "android": "expo run:android",
-    "ios": "expo run:ios",
+    "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject"
   },
@@ -15,7 +16,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@react-native-firebase/app": "^14.9.4",
-    "@react-native-firebase/auth": "^14.9.4",
+    "@react-native-firebase/auth": "^14.8.0",
+    "@react-native-firebase/firestore": "^14.9.4",
     "@react-native-masked-view/masked-view": "0.2.6",
     "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/material-bottom-tabs": "^6.2.1",
