@@ -22,6 +22,7 @@ export function SignUp() {
 
     const [ user, setUser ] = useState();
     const [ password, setPassword ] = useState();
+    const [ userType, setUserType ] = useState();
 
     const navigation = useNavigation();
 
@@ -34,7 +35,8 @@ export function SignUp() {
                 firestore()
                     .collection('user')
                     .add({
-                        id: userId
+                        id: userId,
+                        type: userType
                     });
                 
                 navigation.navigate('Home');
@@ -47,6 +49,11 @@ export function SignUp() {
             });
     }
 
+    function handleUserTypeSelect(item) {
+        setUserType(item);
+        console.log(item);
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.viewContent}>
@@ -56,7 +63,7 @@ export function SignUp() {
             <View>
                 <View>
                     <InputRa
-                        placeholder="Registro do Aluno"
+                        placeholder="Insira seu email institucional"
                         value={user}
                         onChangeText={(value) => setUser(value)}
                     />
@@ -71,7 +78,7 @@ export function SignUp() {
                         confirmPassword={true}
                         placeholder="Confirmar Senha"
                     />
-                     <DropdownUserType placeholder="Eu sou?"/>
+                     <DropdownUserType placeholder="Eu sou?" onSelect={handleUserTypeSelect} />
                 </View>
                 <Button
                     title='Inscreva-se'

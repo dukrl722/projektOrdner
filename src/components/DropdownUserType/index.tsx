@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 
 import {Feather} from '@expo/vector-icons'
@@ -6,24 +7,21 @@ import {styles} from './styles'
 import SelectDropdown from 'react-native-select-dropdown'
 
 const cities = [
-    "Aluno",
-    "Professor"
+    { key: 'Aluno', value: 'student' },
+    { key: 'Professor', value: 'professor' },
 ]
 
-export function DropdownUserType({...rest}) {
+export function DropdownUserType({ onSelect, ...rest }) {
     return (
-
         <SelectDropdown
             data={cities}
-            onSelect={(selectedItem, index) => {
-                console.log(selectedItem, index);
-            }}
+            onSelect={(selectedItem) => onSelect(selectedItem.value)}
             defaultButtonText={'Eu sou?'}
-            buttonTextAfterSelection={(selectedItem, index) => {
-                return selectedItem;
+            buttonTextAfterSelection={(selectedItem) => {
+                return selectedItem.key;
             }}
-            rowTextForSelection={(item, index) => {
-                return item;
+            rowTextForSelection={(item) => {
+                return item.key;
             }}
             buttonStyle={styles.dropdown1BtnStyle}
             buttonTextStyle={styles.dropdown1BtnTxtStyle}
@@ -39,6 +37,7 @@ export function DropdownUserType({...rest}) {
             dropdownStyle={styles.dropdown1DropdownStyle}
             rowStyle={styles.dropdown1RowStyle}
             rowTextStyle={styles.dropdown1RowTxtStyle}
+            {...rest}
         />
     )
 }
