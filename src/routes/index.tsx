@@ -67,18 +67,7 @@ export function AuthRoutes() {
                             />,
                     }}
                 />
-                <Tab.Screen
-                    name='Details'
-                    component={Details}
-                    options={{
-                        tabBarIcon: ({focused}) =>
-                            <Feather
-                                name='user'
-                                size={30}
-                                color={focused ? '#2c9cf7' : 'gray'}
-                            />,
-                    }}
-                />
+
 
                 <Tab.Screen
                     name='Help'
@@ -114,6 +103,11 @@ export function AuthRoutes() {
                     name='Home'
                     options={tabSettings}
                     component={TabNavigator}
+                />
+                <Stack.Screen
+                    name='Details'
+                    options={stackSettings}
+                    component={Details}
                 />
                 <Stack.Screen
                     name='PerfilAluno'

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useRef } from 'react';
 import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 
@@ -10,6 +11,8 @@ import { Profile } from "../../components/Profile";
 import { CardInfo } from "../../components/CardInfo";
 import { FilterModal } from '../../components/FilterModal';
 import { BottomSheet, BottomSheetRef } from 'react-native-sheet';
+
+import { useNavigation } from '@react-navigation/native';
 
 export function Home() {
 
@@ -43,7 +46,13 @@ export function Home() {
         }
     ];
 
+    const navigation = useNavigation();
+
     const bottomSheet = useRef<BottomSheetRef>(null);
+
+    function onCardPress(userId) {
+        navigation.navigate('Details', userId);
+    }
 
     return (
         <View style={themes.container}>
@@ -64,7 +73,7 @@ export function Home() {
                 data={data}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
-                    <CardInfo data={item} />
+                    <CardInfo data={item} onPress={() => onCardPress(item.id)} />
                 )}
             />
         </View>
