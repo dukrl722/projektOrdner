@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Modal, Text, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
+import {FlatList, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 
 import {ButtonSave} from '../ButtonSave/index';
 import {EditInput} from '../EditInput/index';
 import {AvatarEdit} from '../AvatarEdit/index';
-import {FieldAdder} from '../FieldAdder/index';
+import { AreaInteresse } from '../AreaInteresse';
 import {EditField} from '../EditField/index';
 import {DropdownCity} from "../DropdownCity";
 import {DropdownCourse} from "../DropdownCourse";
@@ -19,6 +19,21 @@ type Props = RectButtonProps & {}
 
 export function EditPerfilProfessor({...rest}: Props) {
 
+    const interessante = [
+        {'key':'Visão Computacional'},
+        {'key':'Crypto E-commerce'},
+        {'key':'Cyber Segurança em APIs'},
+        {'key':'Advaita Vedanta'},
+        {'key':'Neo-Confuscionismo'}
+    ]
+
+    const projetinhos = [
+        {'key':'Deep Learning na translitaração de voz'},
+        {'key':'Gestaõ de DevOps à luz da ética aristotélica'},
+        {'key':'A influência neoplatônica em Schopenhauer'},
+        {'key':'Esquizofrenia e sua relação com o livre-mercado'},
+    ]
+
     return (
         <KeyboardAvoidingView style={themes.centered}>
             <LinearGradient colors={["#f4f4f4", "#FDFDFD"]}>
@@ -31,8 +46,19 @@ export function EditPerfilProfessor({...rest}: Props) {
                     <DropdownCourse/>
                     <EditField placeholder="Descricão dos trabalhos"/>
 
-                    <FieldAdder titulo="Áreas de interesse"/>
-                    <FieldAdder titulo="Projetos"/>
+                    <EditField placeholder="Áreas de interesse"/>
+                    <FlatList
+                        style={themes.list}
+                        data={interessante}
+                        renderItem={({item}) => <AreaInteresse dado={item['key']}/>}
+                    />
+
+                    <EditField placeholder="Projetos"/>
+                    <FlatList
+                        style={themes.list}
+                        data={projetinhos}
+                        renderItem={({item}) => <AreaInteresse dado={item['key']}/>}
+                    />
 
                     <TouchableOpacity onPress={() => {
                         alert("Perfil professor atualizado")

@@ -15,7 +15,8 @@ import { PerfilProfessor } from '../screens/PerfilProfessor';
 import { Atalhos } from '../screens/Atalhos';
 import { Home } from "../screens/Home";
 import { Details } from '../screens/Details';
-import { EditPerfilAluno } from '../components/ModalPerfilAluno'
+// import { EditPerfilAluno } from '../components/ModalPerfilAluno'
+import { EditPerfilProfessor } from '../components/ModalPerfilProfessor'
 
 
 import { Feather } from '@expo/vector-icons';
@@ -104,7 +105,7 @@ export function AuthRoutes() {
             <Stack.Navigator>
                 <Stack.Screen
                     name='Login'
-                    component={EditPerfilAluno} // Mudar para 'Login'
+                    component={EditPerfilProfessor} // Mudar para 'Login'
                     options={stackSettings}
                 />
                 <Stack.Screen

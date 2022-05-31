@@ -20,7 +20,7 @@ export function EditField({ placeholder, ...rest }: Props) {
     return (
         <View style={themes.container}>
             <Text style={themes.inputs} >
-                Areas de Interesse
+                {placeholder}
             </Text>
 
             <TouchableOpacity onPress={() => bottomsheet.current?.show()} style={themes.avatar}>
