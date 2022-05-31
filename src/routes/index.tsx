@@ -17,6 +17,7 @@ import { Home } from "../screens/Home";
 import { Details } from '../screens/Details';
 import { EditPerfilAluno } from '../components/ModalPerfilAluno'
 
+
 import { Feather } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
