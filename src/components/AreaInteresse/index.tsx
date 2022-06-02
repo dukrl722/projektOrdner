@@ -10,13 +10,15 @@ interface Props {
 export function AreaInteresse(props: Props) {
     return (
         <View style={themes.container}>
-            <Text>{props.dado}</Text>
+            <Text style={themes.textView}>
+                {props.dado}
+            </Text>
+            
+            <TouchableOpacity onPress={() => alert("Texto editado")} style={themes.editar}>
+                    <Text>Editar</Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => alert("Texto editado")} style={themes.inputs}>
-                <Text>Editar</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => alert("Texto Excluido")} style={themes.inputs}>
+            <TouchableOpacity onPress={() => alert("Texto Excluido")} style={themes.excluir}>
                 <Text>Excluir</Text>
             </TouchableOpacity>
         </View>

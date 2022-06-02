@@ -5,8 +5,9 @@ import { theme } from "../../global/styles/theme";
 
 export const styles = StyleSheet.create({
   container: {
-    width: 331,
+    width: 360,
     height: 60,
+    left:20,
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 15,
@@ -44,11 +45,12 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.menuInputBackground,
     borderWidth: 1,
     borderColor: theme.colors.menuInputBorder,
-    width: 331,
+    width: 360,
     height: 48,
     alignItems: 'center',
     marginBottom: 15,
     borderRadius: 10,
+    top:50
   },
   dropdown1BtnTxtStyle: { fontFamily: theme.fonts.text400, color: theme.colors.menuInputBorder, textAlign: 'left', fontSize: 16 },
   dropdown1DropdownStyle: { backgroundColor: theme.colors.menuInputBackground },

@@ -4,8 +4,9 @@ import { theme } from "../../global/styles/theme";
 
 export const themes = StyleSheet.create({
     container: {
-        width: 331,
+        width: 360,
         height: 50,
+        top:50,
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 15,
@@ -16,7 +17,8 @@ export const themes = StyleSheet.create({
 
     },
     avatar: {
-        left: 120,
+        marginLeft:320,
+        position:'absolute'
     },
     inputs: {
         color: theme.colors.menuInputBorder,

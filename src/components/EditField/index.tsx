@@ -19,7 +19,7 @@ export function EditField({ placeholder, ...rest }: Props) {
 
     return (
         <View style={themes.container}>
-            <Text style={themes.inputs} >
+            <Text style={themes.inputs}>
                 {placeholder}
             </Text>
 
