@@ -1,5 +1,5 @@
 //@ts-nocheck
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Image, Text, Button, Alert } from 'react-native';
 
 import {useNavigation} from "@react-navigation/native";
@@ -11,8 +11,10 @@ import IconProject from '../../assets/icon.png';
 import { ButtonLoginSquare } from '../../components/ButtonLoginSquare';
 import { InputRa } from '../../components/InputRa';
 import { InputPassword } from "../../components/InputPassword";
+import UserHelper from '../../helpers/user';
 
 import auth from '@react-native-firebase/auth';
+
 
 export function Login() {
     const [ user, setUser ] = useState();
@@ -25,7 +27,16 @@ export function Login() {
             .signInWithEmailAndPassword(user, password)
             .then(() => navigation.navigate('Home'))
             .catch(() => Alert.alert('Nome ou senha inválido!'));      
+    };
+
+    async function loadUser() {
+        const currentUser = await UserHelper.getCurrent();
+        if (!!currentUser) navigation.navigate('Home');
     }
+
+    useEffect(() => {
+        loadUser()
+    }, []);
 
     return (
         <View style={styles.container}>

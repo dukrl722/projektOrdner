@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 
@@ -9,7 +10,7 @@ import {HeaderProfile} from '../../components/HeaderProfile';
 import {Background} from '../../components/Background';
 import {BodyProfessorProfile} from '../../components/BodyProfessorProfile';
 
-export function PerfilProfessor() {
+export function ProfessorProfile({userId}) {
 
     return (
         <Background>

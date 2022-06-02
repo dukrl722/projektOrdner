@@ -41,7 +41,7 @@ export function Details({ userId = 'jpLLjuUi8AAFGEbuPMrA' }) {
         <>
             <Header 
                 title='Detalhes'
-                goBackAction={handleGoBack}
+                goBackAction={() => navigation.goBack()}
             />
             <ScrollView style={themes.container} showsVerticalScrollIndicator={false} >
                 {!user.avatar ? null : (
