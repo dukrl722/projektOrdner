@@ -10,11 +10,9 @@ import { theme } from '../global/styles/theme';
 import { Login } from "../screens/Login";
 import { SignUp } from "../screens/SignUp";
 import { Help } from "../screens/Help";
-import { PerfilAluno } from '../screens/PerfilAluno';
-import { PerfilProfessor } from '../screens/PerfilProfessor';
-import { Atalhos } from '../screens/Atalhos';
 import { Home } from "../screens/Home";
 import { Details } from '../screens/Details';
+import { Profile } from '../screens/Profile';
 
 import { Feather } from '@expo/vector-icons';
 
@@ -58,41 +56,18 @@ export function AuthRoutes() {
                 <Tab.Screen
                     name='HomePage'
                     component={Home}
-                    options={{
-                        tabBarIcon: ({focused, color}) =>
-                            <Feather
-                                name='home'
-                                size={30}
-                                color={focused ? '#2c9cf7' : 'gray'}
-                            />,
-                    }}
+                    options={{ tabBarIcon: ({focused}) => <Feather name='home' size={30} color={focused ? '#2c9cf7' : 'gray'} /> }}
                 />
                 <Tab.Screen
-                    name='Details'
-                    component={Details}
-                    options={{
-                        tabBarIcon: ({focused}) =>
-                            <Feather
-                                name='user'
-                                size={30}
-                                color={focused ? '#2c9cf7' : 'gray'}
-                            />,
-                    }}
+                    name='Profile'
+                    component={Profile}
+                    options={{ tabBarIcon: ({focused}) => <Feather name='user' size={30} color={focused ? '#2c9cf7' : 'gray'} /> }}
                 />
-
                 <Tab.Screen
                     name='Help'
                     component={Help}
-                    options={{
-                        tabBarIcon: ({focused}) =>
-                            <Feather
-                                name='help-circle'
-                                size={30}
-                                color={focused ? '#2c9cf7' : 'gray'}
-                            />,
-                    }}
+                    options={{ tabBarIcon: ({focused}) => <Feather name='help-circle' size={30} color={focused ? '#2c9cf7' : 'gray'} /> }}
                 />
-
             </Tab.Navigator>
         )
     }
@@ -116,14 +91,9 @@ export function AuthRoutes() {
                     component={TabNavigator}
                 />
                 <Stack.Screen
-                    name='PerfilAluno'
+                    name='Details'
                     options={stackSettings}
-                    component={PerfilAluno}
-                />
-                <Stack.Screen
-                    name='PerfilProfessor'
-                    options={stackSettings}
-                    component={PerfilProfessor}
+                    component={Details}
                 />
             </Stack.Navigator>
         </NavigationContainer>

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 
@@ -9,7 +10,7 @@ import {HeaderProfile} from '../../components/HeaderProfile';
 import {Background} from '../../components/Background';
 import {BodyStudentProfile} from '../../components/BodyStudentProfile';
 
-export function PerfilAluno() {
+export function StudentProfile({userId}) {
 
     const data = {
         id: '1',

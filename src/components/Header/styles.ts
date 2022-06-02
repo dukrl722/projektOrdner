@@ -20,14 +20,13 @@ export const themes = StyleSheet.create({
         width: '70%'
     },
     headerLeft: {
-        width: '15%',
-        paddingLeft: 15,
+        minWidth: '15%',
+        paddingHorizontal: 10,
         color: theme.colors.secondary90
     },
     headerRight: {
-        width: '15%',
-        paddingRight: 15,
-        alignItems: 'flex-end',
+        minWidth: '15%',
+        paddingHorizontal: 10,
         color: theme.colors.secondary90
     }
 })

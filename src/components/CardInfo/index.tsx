@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from "react";
 
 import {Image, Text, View} from "react-native";
@@ -6,6 +7,7 @@ import {themes} from "./styles";
 import {theme} from "../../global/styles/theme";
 
 import {LinearGradient} from "expo-linear-gradient";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export type CardInfoProps = {
     id: string;
@@ -19,14 +21,14 @@ type Props = {
     data: CardInfoProps;
 }
 
-export function CardInfo({data}: Props) {
+export function CardInfo({data, onPress}: Props) {
 
     const {secondary10, secondary20} = theme.colors;
 
     return (
 
-        <LinearGradient colors={[secondary10, secondary20]} style={themes.container}>
-            <View>
+        <TouchableOpacity onPress={onPress}>
+            <LinearGradient colors={[secondary10, secondary20]} style={themes.container}>
                 <View style={themes.content}>
                     <Image source={{uri: data.image}} style={themes.profilePicture}/>
                     <View style={themes.infoUser}>
@@ -43,7 +45,8 @@ export function CardInfo({data}: Props) {
                         {data.description}
                     </Text>
                 </View>
-            </View>
-        </LinearGradient>
+            </LinearGradient>
+        </TouchableOpacity>
+
     )
 }
