@@ -20,5 +20,8 @@ export const themes = StyleSheet.create({
         borderWidth:1,
         width:360,
         height:100,
+    },
+    button: {
+        top:50,
     }
 })

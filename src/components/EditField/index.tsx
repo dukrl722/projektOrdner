@@ -10,10 +10,11 @@ import {themes} from './styles';
 
 interface Props {
     placeholder: string
+    items: any[]
+    tema:string
 }
 
-export function EditField({ placeholder, ...rest }: Props) {
-
+export function EditField({ placeholder, items, tema,...rest }: Props) {
 
     const bottomsheet = useRef<BottomSheetRef>(null);
 
@@ -28,7 +29,7 @@ export function EditField({ placeholder, ...rest }: Props) {
             </TouchableOpacity>
 
             <BottomSheet height={655} ref={bottomsheet}>
-                <ModalInteresse></ModalInteresse>
+                <ModalInteresse items={items} tema={tema}></ModalInteresse>
             </BottomSheet> 
 
         </View>

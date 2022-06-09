@@ -34,7 +34,7 @@ export function EditPerfilAluno() {
                         <EditInput placeholder="Aluno"/>
                         <EditInput placeholder="Campus"/>
                         <EditInput placeholder="Curso"/>
-                        <EditField placeholder="Areas de interesse"/>
+                        <EditField placeholder="Areas de interesse" items={[]} tema="interesse"/>
 
                         <FlatList
                             style={themes.list}

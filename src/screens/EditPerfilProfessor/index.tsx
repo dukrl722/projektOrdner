@@ -35,6 +35,20 @@ export function EditPerfilProfessor({...rest}: Props) {
         {'key':'Esquizofrenia e sua relação com o livre-mercado'},
     ]
 
+    /*
+        <FlatList
+            style={themes.list}
+            data={interessante}
+            renderItem={({item}) => <AreaInteresse dado={item['key']}/>}
+        />
+
+        <FlatList
+            style={themes.list}
+            data={projetinhos}
+            renderItem={({item}) => <AreaInteresse dado={item['key']}/>}
+        />
+    */
+
     return (
         <Background>
             <View style={themes.container}>
@@ -44,26 +58,14 @@ export function EditPerfilProfessor({...rest}: Props) {
                 <EditInput placeholder="Professor"/>
                 <DropdownCity/>
                 <DropdownCourse/>
-                <EditField placeholder="Descricão dos trabalhos"/>
+                <EditField placeholder="Descricão dos trabalhos" items={[]} tema="trabalho"/>
 
-                <EditField placeholder="Áreas de interesse"/>
-                <EditField placeholder="Projetos"/>
-
-                <FlatList
-                    style={themes.list}
-                    data={interessante}
-                    renderItem={({item}) => <AreaInteresse dado={item['key']}/>}
-                />
-
-                <FlatList
-                    style={themes.list}
-                    data={projetinhos}
-                    renderItem={({item}) => <AreaInteresse dado={item['key']}/>}
-                />
+                <EditField placeholder="Áreas de interesse" items={interessante} tema="interesse"/>
+                <EditField placeholder="Projetos" items={projetinhos} tema="projeto"/>
 
                 <TouchableOpacity onPress={() => {
                     alert("Perfil professor atualizado")
-                }}>
+                }} style={themes.button}>
                     <ButtonSave name="Salvar"/>
                 </TouchableOpacity>
             </View>

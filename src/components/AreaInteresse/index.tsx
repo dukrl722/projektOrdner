@@ -13,7 +13,7 @@ export function AreaInteresse(props: Props) {
             <Text style={themes.textView}>
                 {props.dado}
             </Text>
-            
+
             <TouchableOpacity onPress={() => alert("Texto editado")} style={themes.editar}>
                     <Text>Editar</Text>
                 </TouchableOpacity>
@@ -21,6 +21,7 @@ export function AreaInteresse(props: Props) {
             <TouchableOpacity onPress={() => alert("Texto Excluido")} style={themes.excluir}>
                 <Text>Excluir</Text>
             </TouchableOpacity>
+
         </View>
     )
 }
