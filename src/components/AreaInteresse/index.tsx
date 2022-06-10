@@ -14,9 +14,10 @@ export function AreaInteresse(props: Props) {
                 {props.dado}
             </Text>
 
+            
             <TouchableOpacity onPress={() => alert("Texto editado")} style={themes.editar}>
-                    <Text>Editar</Text>
-                </TouchableOpacity>
+                <Text>Editar</Text>
+            </TouchableOpacity>
 
             <TouchableOpacity onPress={() => alert("Texto Excluido")} style={themes.excluir}>
                 <Text>Excluir</Text>

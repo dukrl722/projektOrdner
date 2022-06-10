@@ -13,13 +13,17 @@ interface Props {
 export function ModalInteresse({items, tema} : Props) {
     const [text,setText] = useState('')
 
+    const addItem = (its:any[], newItem:string) => {
+        its.push({'key':newItem})
+    }
+
     const place_holder = "Escreva aqui seu novo " + tema
 
     return (
         <View style={themes.container}>
             <TextInput placeholder={place_holder} onChangeText={newText => setText(newText)} style={themes.inputs}/>
 
-            <TouchableOpacity style={themes.button} onPress={() => alert("Item adicionado")}>
+            <TouchableOpacity style={themes.button} onPress={() => addItem(items, text)}>
                 <Text style={themes.buttonContent}>Adicionar</Text>
             </TouchableOpacity>
             
