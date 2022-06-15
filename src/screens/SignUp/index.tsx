@@ -6,10 +6,6 @@ import { styles } from './styles';
 
 import IconProject from '../../assets/icon.png';
 
-import { Background } from '../../components/Background';
-
-import { ButtonLoginSquare } from '../../components/ButtonLoginSquare';
-
 import { InputRa } from '../../components/InputRa';
 import { InputPassword } from "../../components/InputPassword";
 import { useNavigation } from '@react-navigation/native';
@@ -51,7 +47,6 @@ export function SignUp() {
 
     function handleUserTypeSelect(item) {
         setUserType(item);
-        console.log(item);
     }
 
     return (

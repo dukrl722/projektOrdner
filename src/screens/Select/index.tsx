@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
-import {useNavigation} from "@react-navigation/native";
-
-import { styles } from './styles';
-
+import { useNavigation } from '@react-navigation/native';
 import IconProject from '../../assets/icon.png';
+import { styles } from './styles';
 
 import { Background } from '../../components/Background';
 import { ButtonLogin } from '../../components/ButtonLogin';
 import { ButtonRegister } from '../../components/ButtonRegister';
+
+import UserHelper from '../../helpers/user';
 
 export function Select() {
 
@@ -23,6 +23,17 @@ export function Select() {
         // @ts-ignore
         navigation.navigate('SignUp');
     }
+
+    async function loadUser() {
+        const currentUser = await UserHelper.getCurrent();
+        
+        //@ts-ignore
+        if (!!currentUser) navigation.navigate('Home');
+    }
+
+    useEffect(() => {
+        loadUser();
+    }, []);
 
     return (
         <Background>

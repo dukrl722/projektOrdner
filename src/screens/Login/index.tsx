@@ -29,15 +29,6 @@ export function Login() {
             .catch(() => Alert.alert('Nome ou senha inválido!'));      
     };
 
-    async function loadUser() {
-        const currentUser = await UserHelper.getCurrent();
-        if (!!currentUser) navigation.navigate('Home');
-    }
-
-    useEffect(() => {
-        loadUser()
-    }, []);
-
     return (
         <View style={styles.container}>
             <View style={styles.viewContent}>
@@ -49,9 +40,6 @@ export function Login() {
                     <InputPassword secureTextEntry confirmPassword={false} placeholder="Senha" onChangeText={(e) => setPassword(e)} />
                 </View>
                 <ButtonLoginSquare disabled={!user || !password} name="Entrar" onPress={handleAccess} />
-                <View style={styles.registerContainer}>
-                    <Text style={{ textAlign: 'center' }} onPress={() => navigation.navigate('SignUp')}>Registrar-se</Text>
-                </View>
             </View>
         </View>
     );

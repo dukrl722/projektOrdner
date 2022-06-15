@@ -13,6 +13,7 @@ import { Help } from "../screens/Help";
 import { Home } from "../screens/Home";
 import { Details } from '../screens/Details';
 import { Profile } from '../screens/Profile';
+import { Select } from '../screens/Select';
 
 import { Feather } from '@expo/vector-icons';
 
@@ -75,6 +76,11 @@ export function AuthRoutes() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen
+                    name='Select'
+                    component={Select}
+                    options={stackSettings}
+                />
                 <Stack.Screen
                     name='Login'
                     component={Login}
