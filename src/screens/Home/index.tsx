@@ -1,5 +1,5 @@
 //@ts-nocheck
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 
 import { RectButton } from "react-native-gesture-handler";
@@ -14,37 +14,41 @@ import { BottomSheet, BottomSheetRef } from 'react-native-sheet';
 
 import { useNavigation } from '@react-navigation/native';
 
+import firestore from '@react-native-firebase/firestore';
+
 export function Home() {
 
-    const data = [
-        {
-            id: '1',
-            name: 'Eduardo da Silva',
-            image: 'https://github.com/dukrl722.png',
-            city: 'Dois Vizinhos',
-            description: 'Estou com projetos referentes a arquitetura de ' +
-                'software para fazer qualquer merda pra fechar o espaço e ' +
-                'ficar bonitinho. Não sei se aqui vai ser a descrição ou o que'
-        },
-        {
-            id: '2',
-            name: 'Gabriel Refosco',
-            image: 'https://github.com/gbrefosco.png',
-            city: 'Dois Vizinhos',
-            description: 'Estou com projetos referentes a arquitetura de ' +
-                'software para fazer qualquer merda pra fechar o espaço e ' +
-                'ficar bonitinho. Não sei se aqui vai ser a descrição ou o que'
-        },
-        {
-            id: '3',
-            name: 'Lucas Lenoch',
-            image: 'https://github.com/neom200.png',
-            city: 'Dois Vizinhos',
-            description: 'Estou com projetos referentes a arquitetura de ' +
-                'software para fazer qualquer merda pra fechar o espaço e ' +
-                'ficar bonitinho. Não sei se aqui vai ser a descrição ou o que'
-        }
-    ];
+    const [data, setData] = useState([]);
+
+    const getUsers = () => {
+        var listUsers = []
+        firestore()
+        .collection('user')
+        .limit(10)
+        .get()
+        .then(querySnapshot => {
+            querySnapshot.docs.forEach( doc => {
+                const user = {
+                    id: doc.data().id,
+                    name: doc.data().name,
+                    image: doc.data().avatar,
+                    city: doc.data().campus,
+                    description: doc.data().descr,
+                }
+
+                listUsers.push(user);
+            })
+            console.log(listUsers);
+            setData(listUsers);
+        }).catch((e) => {
+            console.log('Erro, getUsers:' + e);
+        });
+        
+    }
+
+    useEffect(() => {
+        getUsers();
+    },[])
 
     const navigation = useNavigation();
 
@@ -53,7 +57,7 @@ export function Home() {
     function onCardPress(userId) {
         navigation.navigate('Details', userId);
     }
-
+   
     return (
         <View style={themes.container}>
             <View style={themes.header}>
