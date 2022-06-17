@@ -51,8 +51,8 @@ export function EditPerfilProfessor({...rest}: Props) {
                 <EditInput placeholder="Professor"/>
                 <DropdownCity/>
                 <DropdownCourse/>
-                <EditField placeholder="Descricão dos trabalhos" items={trabaiador} tema="trabalho"/>
 
+                <EditField placeholder="Descricão dos trabalhos" items={trabaiador} tema="trabalho"/>
                 <EditField placeholder="Áreas de interesse" items={interessante} tema="interesse"/>
                 <EditField placeholder="Projetos" items={projetinhos} tema="projeto"/>
 

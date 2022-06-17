@@ -43,7 +43,7 @@ export function EditPerfilAluno() {
                         />
 
                         <TouchableOpacity onPress={() => {
-                            alert("DADOS ALTERADOS COM SUCESSO")
+                            alert("DADOS DE ALUNO ALTERADOS COM SUCESSO")
                         }} style={{marginTop: 67}}>
                             <ButtonSave name="Salvar"/>
                         </TouchableOpacity>
