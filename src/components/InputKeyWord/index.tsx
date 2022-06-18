@@ -8,10 +8,11 @@ type Props = TextInputProps & {
     placeholder: string;
 }
 
-export function InputKeyWord({ placeholder, ...rest }: Props) {
+export function InputKeyWord({ placeholder, onChangeText, ...rest }: Props) {
+
     return (
         <View style={themes.container}>
-            <DefaultInput style={themes.inputs} placeholder={placeholder} />
+            <DefaultInput style={themes.inputs} placeholder={placeholder} onChangeText={onChangeText} />
         </View>
     )
 }
