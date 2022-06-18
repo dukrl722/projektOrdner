@@ -15,11 +15,16 @@ import { BottomSheet, BottomSheetRef } from 'react-native-sheet';
 import { useNavigation } from '@react-navigation/native';
 
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
+
+import UserHelper from "../../helpers/user";
+import user from "../../helpers/user";
 
 export function Home() {
 
     const [data, setData] = useState([]);
     const [search, setSearch] = useState([]);
+    const [userAuth, setUserAuth] = useState([]);
 
     const getUsers = () => {
 
@@ -78,6 +83,10 @@ export function Home() {
     }
 
     useEffect(() => {
+        getUserData();
+    }, [userAuth])
+
+    useEffect(() => {
         getUsers();
     },[search])
 
@@ -88,11 +97,17 @@ export function Home() {
     function onCardPress(userId) {
         navigation.navigate('Details', userId);
     }
-   
+
+    async function getUserData() {
+        await UserHelper.get(auth().currentUser.uid).then((data) => {
+            setUserAuth(data);
+        });
+    }
+
     return (
         <View style={themes.container}>
             <View style={themes.header}>
-                <Profile />
+                <Profile data={userAuth}/>
             </View>
             <View>
                 <BottomSheet height={655} ref={bottomSheet}>
