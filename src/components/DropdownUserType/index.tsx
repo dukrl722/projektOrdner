@@ -6,7 +6,7 @@ import {styles} from './styles'
 
 import SelectDropdown from 'react-native-select-dropdown'
 
-const cities = [
+const types = [
     { key: 'Aluno', value: 'student' },
     { key: 'Professor', value: 'professor' },
 ]
@@ -14,7 +14,7 @@ const cities = [
 export function DropdownUserType({ onSelect, ...rest }) {
     return (
         <SelectDropdown
-            data={cities}
+            data={types}
             onSelect={(selectedItem) => onSelect(selectedItem.value)}
             defaultButtonText={'Eu sou?'}
             buttonTextAfterSelection={(selectedItem) => {
