@@ -15,12 +15,13 @@ export const themes = StyleSheet.create({
         fontSize: 16,
         borderWidth: 5,
         width: 300,
+        marginLeft:50,
         paddingBottom: 16
     },
     button: {
         marginTop: 30,
         borderWidth: 4,
-        marginHorizontal: 20
+        marginHorizontal: 100
     },
     buttonContent: {
         fontFamily: theme.fonts.text500,

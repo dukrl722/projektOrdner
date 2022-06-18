@@ -13,7 +13,7 @@ export const themes = StyleSheet.create({
     textView:{
          flex:1,
         fontSize:12,
-        color:'white'
+        color:'#112211'
     },
     editar: {
         flex:1,
