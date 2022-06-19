@@ -51,12 +51,15 @@ export function Home() {
                         city: doc.data().campus,
                         description: doc.data().descr,
                         course: doc.data().course,
+                        type: doc.data().type,
                     }
 
                     var opcaoKeyWord = true;
                     var opcaoName = true;
                     var opcaoCity = true;
                     var opcaoCourse = true;
+
+                    var isTeacher = String(user.type) == "professor";
 
                     if(validSearch(search.keyWord)){
                         opcaoKeyWord = String(user.description).toLowerCase().includes(String(search.keyWord).toLowerCase());
@@ -71,7 +74,7 @@ export function Home() {
                         opcaoCourse = (user.course == search.course);
                     };
 
-                    if(opcaoKeyWord && opcaoName && opcaoCity && opcaoCourse ){
+                    if(opcaoKeyWord && opcaoName && opcaoCity && opcaoCourse && isTeacher){
                         listUsers.push(user);
                     }
                 })
