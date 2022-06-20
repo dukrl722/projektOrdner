@@ -1,16 +1,16 @@
 //@ts-nocheck
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, Image} from 'react-native';
 
 import {styles} from './styles';
-
-import IconProject from '../../assets/picapau.png';
 
 import {HeaderProfile} from '../../components/HeaderProfile';
 import {Background} from '../../components/Background';
 import {BodyStudentProfile} from '../../components/BodyStudentProfile';
 
-interface User {
+import UserHelper from "../../helpers/user";
+
+export type User = {
     avatar: string,
     name: string,
     city: string,
@@ -21,42 +21,48 @@ interface User {
     descr: string
 }
 
-interface props {
+interface Props {
     userId: String
 }
 
 
-export function StudentProfile({ userId }: props) {
+export function StudentProfile({ userId }: Props) {
     const [ user, setUser ] = useState<User>();
 
-    const navigation = useNavigation();
-
-    async function loadUser() {
-        const userDoc = await UserHelper.get(userId);
-        setUser(userDoc);
-    };
+    async function getUserData() {
+        await UserHelper.get(userId).then((data) => {
+            setUser(data);
+        });
+    }
 
     useEffect(() => {
-        loadUser();
+        getUserData();
     }, []);
 
     if( !user ) return <></>;
 
+    if (user.workedAreas === undefined) {
+        user.workedAreas = [];
+    }
+
     return (
         <Background>
             <View style={styles.container}>
-                <View style={styles.container2}>
+                <View style={styles.header}>
                     <HeaderProfile
                         name= {user.name}
-                        campus={user.course +" - "+ user.campus +" - "+ user.city}
-                        image={IconProject}
-                        cloakProfessor
+                        campus={
+                            (user.course || user.city) ?
+                                user.course +" - "+ user.campus +" - "+ user.city
+                                : ''
+                        }
+                        image={user.avatar}
+                        cloakProfessor={false}
                     />
                 </View>
-                <View style={styles.container3}>
+                <View style={styles.body}>
                     <BodyStudentProfile
-                        area='Areas de interesse?'
-                        interest={data}
+                        interests={user.workedAreas}
                     ></BodyStudentProfile>
                 </View>
             </View>
