@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import React from 'react';
 import {TextInputProps, View} from "react-native";
 import {Feather} from '@expo/vector-icons'
@@ -5,28 +7,27 @@ import {styles} from './styles'
 
 import SelectDropdown from 'react-native-select-dropdown'
 
+
 const course = [
-    "Todos",
-    "Eng. de Software",
-    "Biologia",
-    "Zootecnia",
-    "Agronomia"
+    { key: 'Todos', value: '' },
+    { key: 'Eng. de Software', value: 'Engenharia de Software' },
+    { key: 'Biologia', value: 'Biologia' },
+    { key: 'Zootecnia', value: 'Zootecnia' },
+    { key: 'Agronomia', value: 'Agronomia' },
 ]
 
-export function DropdownCourse({...rest}) {
+export function DropdownCourse({ onSelect, ...rest }) {
     return (
 
         <SelectDropdown
             data={course}
-            onSelect={(selectedItem, index) => {
-                console.log(selectedItem, index);
-            }}
+            onSelect={(selectedItem) => onSelect(selectedItem.value)}
             defaultButtonText={'Curso'}
             buttonTextAfterSelection={(selectedItem, index) => {
-                return selectedItem;
+                return selectedItem.key;
             }}
             rowTextForSelection={(item, index) => {
-                return item;
+                return item.key;
             }}
             buttonStyle={styles.dropdown1BtnStyle}
             buttonTextStyle={styles.dropdown1BtnTxtStyle}
@@ -41,6 +42,7 @@ export function DropdownCourse({...rest}) {
             dropdownStyle={styles.dropdown1DropdownStyle}
             rowStyle={styles.dropdown1RowStyle}
             rowTextStyle={styles.dropdown1RowTxtStyle}
+            {...rest}
         />
     )
 }

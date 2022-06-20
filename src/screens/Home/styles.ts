@@ -18,7 +18,7 @@ export const themes = StyleSheet.create({
         marginBottom: 42
     },
     buttonContainer: {
-        width: 331,
+        width: 350,
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
