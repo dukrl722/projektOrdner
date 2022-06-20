@@ -15,17 +15,17 @@ type Props = {
 
 export function HeaderProfile({ name, campus, image, cloakProfessor, ...rest }: Props) {
 
-    const data1 = [theme.colors.secondary80, theme.colors.secondary100];
-    const data2 = [theme.colors.secondary40, theme.colors.secondary70];
+    const professor = [theme.colors.secondary80, theme.colors.secondary100];
+    const student = [theme.colors.secondary40, theme.colors.secondary70];
 
     return (
         <View style={styles.container}>
             <View style={styles.cloak}>
                 <LinearGradient
-                    colors={cloakProfessor ? data1 : data2}
-                    style={styles.container}
+                    colors={cloakProfessor ? professor : student}
+                    style={styles.linearContainer}
                 />
-                <Image source={image} resizeMode="stretch" style={styles.image} />
+                <Image source={{uri: image}} style={styles.image} />
             </View>
 
             <View style={styles.contentStudent}>
