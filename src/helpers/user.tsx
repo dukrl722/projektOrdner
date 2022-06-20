@@ -32,7 +32,7 @@ async function getCurrent(): Promise<User | undefined> {
     if (!!authUser) {
         return firestore()
             .collection('user')
-            .where('id', '==', 'F5REVDq')
+            .where('id', '==', authUser.uid)
             .limit(1)
             .get()
             .then(snapshot => {
@@ -41,7 +41,7 @@ async function getCurrent(): Promise<User | undefined> {
             });
     }
 
-    return;
+    return; //TODO - tratar o erro onde chama essa função
 }
 
 async function get(uid: String): Promise<User> {
