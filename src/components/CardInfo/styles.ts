@@ -3,7 +3,7 @@ import {theme} from "../../global/styles/theme";
 
 export const themes = StyleSheet.create({
     container: {
-        width: 330,
+        width: 350,
         height: 177,
         flex: 1,
         borderRadius: 10,

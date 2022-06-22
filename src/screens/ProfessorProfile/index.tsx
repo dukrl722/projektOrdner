@@ -1,5 +1,5 @@
 //@ts-nocheck
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, Image} from 'react-native';
 
 import {styles} from './styles';
@@ -10,26 +10,67 @@ import {HeaderProfile} from '../../components/HeaderProfile';
 import {Background} from '../../components/Background';
 import {BodyProfessorProfile} from '../../components/BodyProfessorProfile';
 
-export function ProfessorProfile({userId}) {
+import UserHelper from '../../helpers/user';
+
+interface User {
+    avatar: string,
+    name: string,
+    city: string,
+    campus: string,
+    course: string,
+    workedAreas: [string],
+    projects: [string],
+    descr: string
+}
+
+interface props {
+    userId: String
+}
+
+export function ProfessorProfile({ userId }: props) {
+
+    const [ user, setUser ] = useState<User>();
+
+    async function getUserData() {
+        await UserHelper.get(userId).then((data) => {
+            setUser(data);
+        });
+    }
+
+    useEffect(() => {
+        getUserData();
+    }, []);
+
+    if( !user ) return <></>;
+
+    if (user.workedAreas === undefined) {
+        user.workedAreas = [];
+    }
+
+    if (user.projects === undefined) {
+        user.projects = [];
+    }
 
     return (
         <Background>
             <View style={styles.container}>
-                <View style={styles.container2}>
+                <View style={styles.header}>
                     <HeaderProfile
-                        name="Pica-pau"
-                        campus='Engenharia de Software - Dois Vizinhos'
-                        image={IconProject}
-                        cloakProfessor
+                        name= {user.name}
+                        campus={
+                            (user.city) ?
+                                user.campus +" - "+ user.city
+                                : ''
+                        }
+                        image={user.avatar}
+                        cloakProfessor={true}
                     />
                 </View>
-                <View style={styles.container3}>
+                <View style={styles.body}>
                     <BodyProfessorProfile
-                        description='Aqui vai a descrição que o professor vai colocar.'
-                        areaWork='Áreas trabalhadas'
-                        projectWork='Projetos'
-                        area='Cursos de Coach'
-                        project='Motivação'
+                        description={user.descr}
+                        areaWork={user.workedAreas}
+                        projectWork={user.projects}
                     />
                 </View>
             </View>

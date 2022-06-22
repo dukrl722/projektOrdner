@@ -4,11 +4,11 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1
     },
-    container2: {
+    header: {
         flex: 1,
         marginBottom: 20
     },
-    container3: {
+    body: {
         flex: 7
     }
 });

@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, FlatList} from 'react-native';
 
 import {styles} from './styles';
+import {CardInfo} from "../CardInfo";
 
 export type BodyStudentProfileProps = {
     id: string,
@@ -9,21 +10,26 @@ export type BodyStudentProfileProps = {
 }
 
 type Props = {
-    area: string,
-    interest: BodyStudentProfileProps
+    interests: [BodyStudentProfileProps]
 }
 
 
-export function BodyStudentProfile({area, interest, ...rest}: Props) {
+export function BodyStudentProfile({interests, ...rest}: Props) {
 
     return (
         <View style={styles.container}>
             <View style={styles.contentArea}>
-                <Text style={styles.name}>{area}</Text>
+                <Text style={styles.name}>Areas de interesse</Text>
                 {
-                    /*
-                    * usar map
-                    * */
+                    interests.length
+                        ? <FlatList
+                            data={interests}
+                            keyExtractor={interest => interest.id}
+                            renderItem={({ item }) => (
+                                <Text>{item.name}</Text>
+                            )}
+                        />
+                        : <Text>Nenhuma área de interesse</Text>
                 }
             </View>
         </View>
