@@ -93,7 +93,7 @@ export function AuthRoutes() {
                 />
                 <Stack.Screen
                     name='Login'
-                    component={Login}
+                    component={Login} // Mudar para 'Login'
                     options={stackSettings}
                 />
                 <Stack.Screen
