@@ -3,6 +3,7 @@ import firestore from '@react-native-firebase/firestore';
 
 
 interface User {
+    id: string,
     avatar: string,
     name: string,
     city: string,
@@ -15,6 +16,7 @@ interface User {
 
 function parseUser(userDoc: any): User {
     return {
+        id: userDoc.id,
         avatar: userDoc.avatar,
         name: userDoc.name,
         city: userDoc.city,

@@ -23,18 +23,7 @@ export function Select() {
         // @ts-ignore
         navigation.navigate('SignUp');
     }
-
-    async function loadUser() {
-        const currentUser = await UserHelper.getCurrent();
-        
-        //@ts-ignore
-        if (!!currentUser) navigation.navigate('Home');
-    }
-
-    useEffect(() => {
-        loadUser();
-    }, []);
-
+    
     return (
         <Background>
           
