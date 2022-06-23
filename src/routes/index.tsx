@@ -1,19 +1,20 @@
 //@ts-nocheck
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { theme } from '../global/styles/theme';
 
-import { Login } from "../screens/Login";
-import { SignUp } from "../screens/SignUp";
-import { Help } from "../screens/Help";
-import { Home } from "../screens/Home";
+import { Login } from '../screens/Login';
+import { SignUp } from '../screens/SignUp';
+import { Help } from '../screens/Help';
+import { Home } from '../screens/Home';
 import { Details } from '../screens/Details';
 import { Profile } from '../screens/Profile';
 import { Select } from '../screens/Select';
+import { LoadApp } from '../screens/LoadApp';
 
 import { Feather } from '@expo/vector-icons';
 
@@ -46,7 +47,11 @@ export function AuthRoutes() {
                         backgroundColor: '#DADADA',
                         height: 80,
                         paddingBottom: 15,
-                        borderRadius: 15
+                        borderRadius: 15,
+                        shadowOffset: { height: -3 },
+                        shadowColor: 'grey',
+                        shadowOpacity: 0.4,
+
                     },
                     tabBarItemStyle: {
                         marginHorizontal: 20
@@ -77,13 +82,18 @@ export function AuthRoutes() {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
+                    name='LoadApp'
+                    component={LoadApp}
+                    options={stackSettings}
+                />
+                <Stack.Screen
                     name='Select'
                     component={Select}
                     options={stackSettings}
                 />
                 <Stack.Screen
                     name='Login'
-                    component={Login}
+                    component={Login} // Mudar para 'Login'
                     options={stackSettings}
                 />
                 <Stack.Screen

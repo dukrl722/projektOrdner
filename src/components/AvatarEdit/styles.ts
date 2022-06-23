@@ -6,6 +6,8 @@ export const themes = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom:30,
+        top:50,
+        right:15,
     },
     avatar: {
         width: 70,
@@ -17,6 +19,5 @@ export const themes = StyleSheet.create({
     edition: {
         position:'absolute',
         top:60,
-        right:20
     }
 });
