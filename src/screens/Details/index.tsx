@@ -16,17 +16,15 @@ interface User {
     descr: string
 }
 
-interface props {
-    userId: String
-}
-
-export function Details({ userId }: props) {
+//@ts-ignore
+export function Details({ route }) {
 
     const [ user, setUser ] = useState<User>();
 
     const navigation = useNavigation();
 
     async function loadUser() {
+        const { userId } = route.params;
         const userDoc = await UserHelper.get(userId);
         setUser(userDoc);
     };
