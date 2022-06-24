@@ -27,6 +27,7 @@ export function SignUp() {
             .createUserWithEmailAndPassword(user, password)
             .then((data) => {
                 const { uid:userId } = data.user;
+                console.log(userType);
 
                 var firstUsername = String(user).substring(0,String(user).indexOf('@'));
 

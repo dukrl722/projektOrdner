@@ -29,8 +29,8 @@ export function DropdownCourse({ onSelect, ...rest }) {
             rowTextForSelection={(item, index) => {
                 return item.key;
             }}
-            buttonStyle={styles.dropdown1BtnStyle}
-            buttonTextStyle={styles.dropdown1BtnTxtStyle}
+            buttonStyle={styles.dropdownBtnStyle}
+            buttonTextStyle={styles.dropdownBtnTxtStyle}
             renderDropdownIcon={isOpened => {
                 return <Feather
 					name={isOpened ? 'chevron-up' : 'chevron-down'}
@@ -39,9 +39,9 @@ export function DropdownCourse({ onSelect, ...rest }) {
 
             }}
             dropdownIconPosition={'right'}
-            dropdownStyle={styles.dropdown1DropdownStyle}
-            rowStyle={styles.dropdown1RowStyle}
-            rowTextStyle={styles.dropdown1RowTxtStyle}
+            dropdownStyle={styles.dropdownDropdownStyle}
+            rowStyle={styles.dropdownRowStyle}
+            rowTextStyle={styles.dropdownRowTxtStyle}
             {...rest}
         />
     )

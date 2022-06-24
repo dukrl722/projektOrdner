@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         fontFamily: theme.fonts.title700,
         color: theme.colors.secondary90,
-        marginTop: 20
     },
 
     contentArea: {

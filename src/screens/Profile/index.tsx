@@ -23,12 +23,12 @@ export function Profile() {
     }, []);
 
     return !user ? null : (
-        <View>
-                {user.type == 'professor' ? (
-                    <ProfessorProfile userId={user.id} />
-                ) : (
-                    <StudentProfile userId={user.id} />
-                )}
-        </View>
+        <>
+            {user.type == 'professor' ? (
+                <ProfessorProfile userId={user.id} />
+            ) : (
+                <StudentProfile userId={user.id} />
+            )}
+        </>
     );
 }
