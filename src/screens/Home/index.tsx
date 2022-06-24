@@ -97,10 +97,6 @@ export function Home() {
 
     const bottomSheet = useRef<BottomSheetRef>(null);
 
-    function onCardPress(userId) {
-        navigation.navigate('Details', userId);
-    }
-
     async function getUserData() {
         await UserHelper.get(auth().currentUser.uid).then((data) => {
             setUserAuth(data);
@@ -126,7 +122,7 @@ export function Home() {
                 data={data}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
-                    <CardInfo data={item} onPress={() => onCardPress(item.id)} />
+                    <CardInfo data={item} onPress={() => navigation.navigate('Details', { userId: item.id })} />
                 )}
             />
         </View>
