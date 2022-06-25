@@ -6,7 +6,6 @@ export const themes = StyleSheet.create({
     container: {
         width: 360,
         height: 48,
-        top:50,
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 15,

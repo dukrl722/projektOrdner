@@ -30,10 +30,15 @@ export const styles = StyleSheet.create({
         top: 90,
         marginBottom: 25
     },
+    contentName: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
     name: {
         fontSize: 20,
         fontFamily: theme.fonts.title700,
-        color: theme.colors.secondary90
+        color: theme.colors.secondary90,
+        marginRight: 5
     },
     university: {
         fontSize: 16,

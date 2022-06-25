@@ -4,16 +4,15 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import {themes} from './styles';
 
 interface Props {
-    dado: string
+    data: string
 }
 
-export function AreaInteresse(props: Props) {
+export function AreaInteresse({data} : Props) {
     return (
         <View style={themes.container}>
             <Text style={themes.textView}>
-                {props.dado}
+                {data}
             </Text>
-
             
             <TouchableOpacity onPress={() => alert("Texto editado")} style={themes.editar}>
                 <Text>Editar</Text>

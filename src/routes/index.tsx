@@ -17,6 +17,8 @@ import { Select } from '../screens/Select';
 import { LoadApp } from '../screens/LoadApp';
 
 import { Feather } from '@expo/vector-icons';
+import {EditProfileProfessor} from "../screens/EditProfileProfessor";
+import {EditProfileStudent} from "../screens/EditProfileStudent";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -110,6 +112,16 @@ export function AuthRoutes() {
                     name='Details'
                     options={stackSettings}
                     component={Details}
+                />
+                <Stack.Screen
+                    name='EditProfileProfessor'
+                    options={stackSettings}
+                    component={EditProfileProfessor}
+                />
+                <Stack.Screen
+                    name='EditProfileStudent'
+                    options={stackSettings}
+                    component={EditProfileStudent}
                 />
             </Stack.Navigator>
         </NavigationContainer>
