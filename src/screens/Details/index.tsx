@@ -41,49 +41,51 @@ export function Details({ route }) {
                 title='Detalhes'
                 goBackAction={() => navigation.goBack()}
             />
-            <ScrollView style={themes.container} showsVerticalScrollIndicator={false} >
-                {!user.avatar ? null : (
-                    <View style={themes.imageContainer}>
-                        <Image source={{ uri: user.avatar }} style={themes.image} />
-                    </View>
-                )}
-                <View style={{ paddingVertical: 10 }}>
-                    <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'center' }}>
-                        <Text style={themes.title}>{user.name} - </Text>
-                        <Text style={themes.titleBold}>{user.campus ? user.campus : 'Sem localidade cadastrada.'}</Text>
-                    </View>
-                    {user.course ? <Text style={themes.subtitle}>{user.course}</Text> : null}
-                </View>
-                {!user.descr ? null : (
+            <View style={themes.container}>
+                <ScrollView showsVerticalScrollIndicator={false} >
+                    {!user.avatar ? null : (
+                        <View style={themes.imageContainer}>
+                            <Image source={{ uri: user.avatar }} style={themes.image} />
+                        </View>
+                    )}
                     <View style={{ paddingVertical: 10 }}>
-                        <Text style={themes.text}>{user.descr}</Text>
+                        <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'center' }}>
+                            <Text style={themes.title}>{user.name} - </Text>
+                            <Text style={themes.titleBold}>{user.campus ? user.campus : 'Sem localidade cadastrada.'}</Text>
+                        </View>
+                        {user.course ? <Text style={themes.subtitle}>{user.course}</Text> : null}
                     </View>
-                )}
-                {!user.workedAreas ? null : (
-                    <View style={themes.itensContainer}>
-                        <Text style={themes.titleBold} >Áreas Trabalhadas</Text>
-                            {user.workedAreas.map((wa, index) => {
+                    {!user.descr ? null : (
+                        <View style={{ paddingVertical: 10 }}>
+                            <Text style={themes.text}>{user.descr}</Text>
+                        </View>
+                    )}
+                    {!user.workedAreas ? null : (
+                        <View style={themes.itensContainer}>
+                            <Text style={themes.titleBold} >Áreas Trabalhadas</Text>
+                                {user.workedAreas.map((wa, index) => {
+                                    return (
+                                        <View key={index.toString()} style={themes.itens}>
+                                            <Text style={themes.itensText}>{wa}</Text>
+                                        </View>
+                                    )
+                                })}
+                        </View>
+                    )}
+                    {!user.projects ? null : (
+                        <View style={themes.itensContainer}>
+                            <Text style={themes.titleBold}>Projetos</Text>
+                            {user.projects.map((p, index) => {
                                 return (
                                     <View key={index.toString()} style={themes.itens}>
-                                        <Text style={themes.itensText}>{wa}</Text>
+                                        <Text style={themes.itensText}>{p}</Text>
                                     </View>
                                 )
                             })}
-                    </View>
-                )}
-                {!user.projects ? null : (
-                    <View style={themes.itensContainer}>
-                        <Text style={themes.titleBold}>Projetos</Text>
-                        {user.projects.map((p, index) => {
-                            return (
-                                <View key={index.toString()} style={themes.itens}>
-                                    <Text style={themes.itensText}>{p}</Text>
-                                </View>
-                            )
-                        })}
-                    </View>
-                )}
-            </ScrollView>
+                        </View>
+                    )}
+                </ScrollView>
+            </View>
         </>
     )
 }

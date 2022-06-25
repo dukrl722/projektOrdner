@@ -39,7 +39,7 @@ export function Home() {
             var listUsers = []
             firestore()
             .collection('user')
-            .limit(10)
+            .limit(15)
             .get()
             .then(querySnapshot => {
                 querySnapshot.docs.forEach( doc => {
@@ -54,29 +54,29 @@ export function Home() {
                         type: doc.data().type,
                     }
 
-                    var opcaoKeyWord = true;
-                    var opcaoName = true;
-                    var opcaoCity = true;
-                    var opcaoCourse = true;
+                    // var opcaoKeyWord = true;
+                    // var opcaoName = true;
+                    // var opcaoCity = true;
+                    // var opcaoCourse = true;
 
-                    var isTeacher = String(user.type) == "professor";
+                    // var isTeacher = String(user.type) == "professor";
 
-                    if(validSearch(search.keyWord)){
-                        opcaoKeyWord = String(user.description).toLowerCase().includes(String(search.keyWord).toLowerCase());
-                    } 
-                    if(validSearch(search.name)){
-                        opcaoName = String(user.name).toLowerCase().includes(String(search.name).toLowerCase());
-                    } 
-                    if(validSearch(search.city)){
-                        opcaoCity = (user.city == search.city);
-                    }
-                    if(validSearch(search.course)){
-                        opcaoCourse = (user.course == search.course);
-                    };
+                    // if(validSearch(search.keyWord)){
+                    //     opcaoKeyWord = String(user.description).toLowerCase().includes(String(search.keyWord).toLowerCase());
+                    // } 
+                    // if(validSearch(search.name)){
+                    //     opcaoName = String(user.name).toLowerCase().includes(String(search.name).toLowerCase());
+                    // } 
+                    // if(validSearch(search.city)){
+                    //     opcaoCity = (user.city == search.city);
+                    // }
+                    // if(validSearch(search.course)){
+                    //     opcaoCourse = (user.course == search.course);
+                    // };
 
-                    if(opcaoKeyWord && opcaoName && opcaoCity && opcaoCourse && isTeacher){
+                    // if(opcaoKeyWord && opcaoName && opcaoCity && opcaoCourse && isTeacher){
                         listUsers.push(user);
-                    }
+                    // }
                 })
                 setData(listUsers);
             }).catch((e) => {
@@ -121,6 +121,7 @@ export function Home() {
             <FlatList
                 data={data}
                 keyExtractor={item => item.id}
+                bounces={true}
                 renderItem={({ item }) => (
                     <CardInfo data={item} onPress={() => navigation.navigate('Details', { userId: item.id })} />
                 )}

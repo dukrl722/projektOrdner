@@ -32,10 +32,10 @@ export const theme = {
         text500: 'Roboto_500Medium',
     },
 
-    tabBar: {
-        backgroundColor: '#DADADA',
-        paddingBottom: 14,
-        height: 70,
-        alignItems: 'center',
-    },
+    // tabBar: {
+    //     backgroundColor: '#DADADA',
+    //     paddingBottom: 14,
+    //     height: 70,
+    //     alignItems: 'center',
+    // },
 };

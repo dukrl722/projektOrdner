@@ -6,8 +6,9 @@ import { Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-googl
 import AppLoading from 'expo-app-loading';
 
 import { Background } from './src/components/Background'
-import {StatusBar} from "react-native";
+import { StatusBar } from 'react-native';
 import { AuthRoutes } from './src/routes';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
 
@@ -24,7 +25,9 @@ export default function App() {
     return (
         <Background>
             <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
-            <AuthRoutes />
+                <SafeAreaView style={{ flex: 1 }}>
+                    <AuthRoutes />
+                </SafeAreaView>
         </Background>
     )
 }
