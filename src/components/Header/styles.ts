@@ -8,7 +8,13 @@ export const themes = StyleSheet.create({
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
-        top: getStatusBarHeight() + 10
+        paddingBottom: 10,
+        // top: getStatusBarHeight() + 10,
+        shadowColor: 'black',
+        //@ts-ignore
+        shadowOffset: { height: -100, width: 100 },
+        shadowRadius: 5,
+        shadowOpacity: 1
     },
     text: {
         color: theme.colors.secondary90,

@@ -19,6 +19,7 @@ import { LoadApp } from '../screens/LoadApp';
 import { Feather } from '@expo/vector-icons';
 import {EditProfileProfessor} from "../screens/EditProfileProfessor";
 import {EditProfileStudent} from "../screens/EditProfileStudent";
+import { themes } from './styles';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -26,35 +27,17 @@ const Stack = createStackNavigator();
 export function AuthRoutes() {
 
     const stackSettings = {
-        headerShown: false,
-        headerStyle: {
-            backgroundColor: theme.colors.secondary100
-        },
-        tabBarActiveTintColor: '#fff',
-        tabBarStyle: theme.tabBar
-    }
-
-    const tabSettings = {
         headerShown: false
     }
 
-    const tabBarTheme = theme.tabBar;
+    const a = '#DADADA'
 
     const TabNavigator = () => {
         return (
             <Tab.Navigator
                 screenOptions={{
                     headerShown: false,
-                    tabBarStyle: {
-                        backgroundColor: '#DADADA',
-                        height: 80,
-                        paddingBottom: 15,
-                        borderRadius: 15,
-                        shadowOffset: { height: -3 },
-                        shadowColor: 'grey',
-                        shadowOpacity: 0.4,
-
-                    },
+                    tabBarStyle: themes.tabBar,
                     tabBarItemStyle: {
                         marginHorizontal: 20
                     },
@@ -105,7 +88,7 @@ export function AuthRoutes() {
                 />
                 <Stack.Screen
                     name='Home'
-                    options={tabSettings}
+                    options={{ headerShown: false }}
                     component={TabNavigator}
                 />
                 <Stack.Screen

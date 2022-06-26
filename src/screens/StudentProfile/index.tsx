@@ -1,14 +1,17 @@
-//@ts-nocheck
-import React, {useState, useEffect} from 'react';
-import {View, Text, Image} from 'react-native';
 
-import {styles} from './styles';
+import React, { useState, useEffect } from 'react';
+import { View, Text } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import { RectButton } from 'react-native-gesture-handler';
+import { styles } from './styles';
 
-import {HeaderProfile} from '../../components/HeaderProfile';
-import {Background} from '../../components/Background';
-import {BodyStudentProfile} from '../../components/BodyStudentProfile';
-
+import { HeaderProfile } from '../../components/HeaderProfile';
+import { Background } from '../../components/Background';
+import { BodyStudentProfile } from '../../components/BodyStudentProfile';
 import UserHelper from "../../helpers/user";
+
+import { useNavigation } from '@react-navigation/native';
+import { ButtonLogout } from '../../components/ButtonLogout';
 
 export type User = {
     avatar: string,
@@ -16,7 +19,7 @@ export type User = {
     city: string,
     campus: string,
     course: string,
-    workedAreas: [string],
+    workedAreas: [string] | [],
     projects: [string],
     descr: string
 }
@@ -62,9 +65,11 @@ export function StudentProfile({ userId }: Props) {
                 </View>
                 <View style={styles.body}>
                     <BodyStudentProfile
+                    //@ts-ignore
                         interests={user.workedAreas}
                     ></BodyStudentProfile>
                 </View>
+                <ButtonLogout />
             </View>
         </ Background>
     );

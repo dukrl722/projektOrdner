@@ -1,14 +1,12 @@
 //@ts-nocheck
-import React, {useState, useEffect} from 'react';
-import {View, Text, Image} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View } from 'react-native';
+import { styles } from './styles';
 
-import {styles} from './styles';
-
-import IconProject from '../../assets/picapau.png';
-
-import {HeaderProfile} from '../../components/HeaderProfile';
-import {Background} from '../../components/Background';
-import {BodyProfessorProfile} from '../../components/BodyProfessorProfile';
+import { HeaderProfile } from '../../components/HeaderProfile';
+import { Background } from '../../components/Background';
+import { BodyProfessorProfile } from '../../components/BodyProfessorProfile';
+import { ButtonLogout } from '../../components/ButtonLogout';
 
 import UserHelper from '../../helpers/user';
 
@@ -18,8 +16,8 @@ interface User {
     city: string,
     campus: string,
     course: string,
-    workedAreas: [string],
-    projects: [string],
+    workedAreas: [string] | [], //corrigir pra array de objeto
+    projects: [string] | [], //corrigir pra array de objeto
     descr: string
 }
 
@@ -73,6 +71,7 @@ export function ProfessorProfile({ userId }: props) {
                         projectWork={user.projects}
                     />
                 </View>
+                <ButtonLogout />
             </View>
         </ Background>
     );
