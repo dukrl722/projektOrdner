@@ -34,10 +34,14 @@ export function SignUp() {
                 firestore()
                     .collection('user')
                     .add({
-                        id: userId,
+                        uid: userId,
                         type: userType,
                         name: firstUsername,
                         campus: '',
+                        course: '',
+                        city: '',
+                        workedAreas: [],
+                        projects: [],
                         descr: 'Olá sou novo(a) aqui!',
                         avatar: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bc342894-c205-45ce-9efa-d68b708002f2/d5lgwac-53dd4c40-c93c-46b8-82bd-76c0bbde97c7.png/v1/fill/w_900,h_685,q_80,strp/naruto_facebook_avatar_by_citrusdrawings_d5lgwac-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9Njg1IiwicGF0aCI6IlwvZlwvYmMzNDI4OTQtYzIwNS00NWNlLTllZmEtZDY4YjcwODAwMmYyXC9kNWxnd2FjLTUzZGQ0YzQwLWM5M2MtNDZiOC04MmJkLTc2YzBiYmRlOTdjNy5wbmciLCJ3aWR0aCI6Ijw9OTAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.tkfEb6-mr8Td1M06gi4xUvsUAveLdtisPW3rCrYymVg'
 
@@ -68,7 +72,7 @@ export function SignUp() {
                     <InputRa
                         placeholder="Insira seu email institucional"
                         value={user}
-                        onChangeText={(value) => setUser(value)}
+                        onChangeText={(value) => { console.log(value), setUser(value) }}
                     />
                     <InputPassword
                         secureTextEntry={true}

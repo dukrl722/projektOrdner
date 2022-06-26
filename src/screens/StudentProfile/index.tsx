@@ -25,7 +25,7 @@ export type User = {
 }
 
 interface Props {
-    userId: String
+    userId: string
 }
 
 
@@ -33,7 +33,7 @@ export function StudentProfile({ userId }: Props) {
     const [ user, setUser ] = useState<User>();
 
     async function getUserData() {
-        await UserHelper.get(userId).then((data) => {
+        UserHelper.get(userId).then((data) => {
             setUser(data);
         });
     }
@@ -43,10 +43,6 @@ export function StudentProfile({ userId }: Props) {
     }, []);
 
     if( !user ) return <></>;
-
-    if (user.workedAreas === undefined) {
-        user.workedAreas = [];
-    }
 
     return (
         <Background>

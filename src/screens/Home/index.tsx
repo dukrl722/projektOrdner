@@ -45,7 +45,8 @@ export function Home() {
                 querySnapshot.docs.forEach( doc => {
                     
                     const user = {
-                        id: doc.data().id,
+                        id: doc.id,
+                        uid: doc.data().uid,
                         name: doc.data().name,
                         image: doc.data().avatar,
                         city: doc.data().campus,
@@ -77,7 +78,8 @@ export function Home() {
                     // if(opcaoKeyWord && opcaoName && opcaoCity && opcaoCourse && isTeacher){
                         listUsers.push(user);
                     // }
-                })
+                });
+
                 setData(listUsers);
             }).catch((e) => {
                 console.log('Erro, getUsers: ' + e + 'Search = ' + search);
@@ -98,9 +100,8 @@ export function Home() {
     const bottomSheet = useRef<BottomSheetRef>(null);
 
     async function getUserData() {
-        await UserHelper.get(auth().currentUser.uid).then((data) => {
-            setUserAuth(data);
-        });
+        const currentUser = await UserHelper.getCurrent();
+        setUserAuth(currentUser);
     }
 
     return (

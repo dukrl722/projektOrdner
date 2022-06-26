@@ -30,7 +30,7 @@ export function ProfessorProfile({ userId }: props) {
     const [ user, setUser ] = useState<User>();
 
     async function getUserData() {
-        await UserHelper.get(userId).then((data) => {
+        UserHelper.get(userId).then((data) => {
             setUser(data);
         });
     }
@@ -40,14 +40,6 @@ export function ProfessorProfile({ userId }: props) {
     }, []);
 
     if( !user ) return <></>;
-
-    if (user.workedAreas === undefined) {
-        user.workedAreas = [];
-    }
-
-    if (user.projects === undefined) {
-        user.projects = [];
-    }
 
     return (
         <Background>

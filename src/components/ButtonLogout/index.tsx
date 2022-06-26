@@ -13,7 +13,7 @@ export function ButtonLogout() {
         auth().signOut()
             .then(() => {
                 //@ts-ignore
-                navigation.navigate('Select');
+                navigation.reset('Select');
             });
     }
 
