@@ -1,6 +1,7 @@
 // @ts-nocheck
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {TouchableOpacity, FlatList, View, TextInput, Text, ScrollView} from 'react-native';
+import AppLoading from 'expo-app-loading';
 
 import {ButtonSave} from '../../components/ButtonSave/index';
 import {EditInput} from '../../components/EditInput/index';
@@ -16,34 +17,26 @@ import {DropdownCourse} from "../../components/DropdownCourse";
 import {DropdownUserType} from "../../components/DropdownUserType";
 import {Feather} from "@expo/vector-icons";
 import {RectButton} from "react-native-gesture-handler";
+import UserHelper from "../../helpers/user";
+import User from "../../helpers/user";
 
 export function EditProfileStudent() {
 
-    const [city, setCity] = useState([]);
-    const [course, setCourse] = useState([]);
+    const [user, setUser] = useState<User>();
+    const [name, setName] = useState<String>();
+    const [type, setType] = useState<String>();
+    const [city, setCity] = useState<String>([]);
+    const [course, setCourse] = useState<String>([]);
 
-    const data = [
-        {
-            id: 1,
-            name: 'teste'
-        },
-        {
-            id: 2,
-            name: 'teste'
-        },
-        {
-            id: 3,
-            name: 'teste'
-        },
-        {
-            id: 4,
-            name: 'teste'
-        },
-        {
-            id: 5,
-            name: 'teste'
-        }
-    ]
+    async function getCurrentUser() {
+        UserHelper.getCurrent().then(
+            (data) => {
+                setUser(data);
+            }
+        ).catch(err => {
+            console.log(err)
+        })
+    }
 
     function handleCitySelect(item) {
         setCity(item);
@@ -57,38 +50,67 @@ export function EditProfileStudent() {
 
     }
 
+    useEffect(() => {
+        getCurrentUser();
+    }, [])
+
     const {primary, secondary} = theme.colorFilter;
+
+    if (!user) {
+        return <AppLoading />;
+    }
 
     return (
         <Background>
             <ScrollView>
                 <View style={themes.container}>
-                    <AvatarEdit urlImage={'https://github.com/neom200.png'}/>
+                    <AvatarEdit urlImage={user.avatar}/>
 
                     <View style={themes.content}>
                         <View style={themes.contentView}>
-                            <TextInput placeholder="Nome Completo" style={themes.contentInput} />
+                            <TextInput
+                                placeholder="Nome Completo"
+                                style={themes.contentInput}
+                                value={user.name}
+                                onChangeText={(value) => {
+                                    setName(value);
+                                }}
+                            />
                         </View>
-                        <DropdownUserType placeholder="Eu sou?" onSelect={handleUserTypeSelect} />
-                        <DropdownCity onSelect={handleCitySelect}/>
-                        <DropdownCourse onSelect={handleCourseSelect}/>
+                        <DropdownUserType
+                            placeholder="Eu sou?"
+                            onSelect={handleUserTypeSelect}
+                            defaultButtonText={
+                                user.type == 'student'
+                                    ? 'Aluno'
+                                    : 'Professor'
+                            }
+                        />
+                        <DropdownCity
+                            onSelect={handleCitySelect}
+                            value={user.city}
+                        />
+                        <DropdownCourse
+                            onSelect={handleCourseSelect}
+                            value={user.course}
+                        />
                     </View>
 
-                    <EditField placeholder="Areas de interesse" items={data} theme="interesse"/>
+                    <EditField placeholder="Areas de interesse" items={user.workedAreas} theme="interesse"/>
 
-                    <FlatList
-                        data={data}
-                        keyExtractor={item => item.id}
-                        renderItem={({item}) => (
-                            <View style={themes.listContainer}>
-                                <Text style={themes.text}>{item.name}</Text>
-                                <View style={themes.iconContent}>
-                                    <Feather name={"edit-2"} size={20} style={{marginRight: 10}} />
-                                    <Feather name={"trash-2"} size={20} />
+                    {
+                        user.workedAreas.map(
+                            (item, index) => (
+                                <View style={themes.listContainer} key={index.toString()}>
+                                    <Text style={themes.text}>{item.name}</Text>
+                                    <View style={themes.iconContent}>
+                                        <Feather name={"edit-2"} size={20} style={{marginRight: 10}} />
+                                        <Feather name={"trash-2"} size={20} />
+                                    </View>
                                 </View>
-                            </View>
-                        )}
-                    />
+                            )
+                        )
+                    }
 
                     <View style={themes.saveButtonContainer}>
                         <RectButton style={themes.saveButton}>

@@ -6,6 +6,7 @@ interface User {
     id: string,
     avatar: string,
     name: string,
+    type: string,
     city: string,
     campus: string,
     course: string,
@@ -19,11 +20,12 @@ function parseUser(userDoc: any): User {
         id: userDoc.id,
         avatar: userDoc.avatar,
         name: userDoc.name,
-        city: userDoc.city,
-        campus: userDoc.campus,
+        type: userDoc.type,
+        city: userDoc.city || '',
+        campus: userDoc.campus || '',
         course: userDoc.course,
-        workedAreas: userDoc.workedAreas,
-        projects: userDoc.projects,
+        workedAreas: userDoc.workedAreas || [],
+        projects: userDoc.projects || [],
         descr: userDoc.descr
     };
 }
