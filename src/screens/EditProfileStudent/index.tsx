@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import {TouchableOpacity, FlatList, View, TextInput, Text, ScrollView} from 'react-native';
 import AppLoading from 'expo-app-loading';
+import firestore from '@react-native-firebase/firestore';
 
 import {ButtonSave} from '../../components/ButtonSave/index';
 import {EditInput} from '../../components/EditInput/index';
@@ -19,6 +20,7 @@ import {Feather} from "@expo/vector-icons";
 import {RectButton} from "react-native-gesture-handler";
 import UserHelper from "../../helpers/user";
 import User from "../../helpers/user";
+import {useNavigation} from "@react-navigation/native";
 
 export function EditProfileStudent() {
 
@@ -27,6 +29,9 @@ export function EditProfileStudent() {
     const [type, setType] = useState<String>();
     const [city, setCity] = useState<String>([]);
     const [course, setCourse] = useState<String>([]);
+    const [interest, setInterest] = useState([]);
+
+    const navigation = useNavigation();
 
     async function getCurrentUser() {
         UserHelper.getCurrent().then(
@@ -36,6 +41,21 @@ export function EditProfileStudent() {
         ).catch(err => {
             console.log(err)
         })
+    }
+
+    function handleSaveDataUser() {
+        firestore()
+            .collection('Users')
+            .doc(user.id)
+            .set({
+                name: name,
+                type: type,
+                city: city,
+                course: course
+            })
+            .then(() => {
+                navigation.navigate('Profile');
+            });
     }
 
     function handleCitySelect(item) {
@@ -113,7 +133,7 @@ export function EditProfileStudent() {
                     }
 
                     <View style={themes.saveButtonContainer}>
-                        <RectButton style={themes.saveButton}>
+                        <RectButton style={themes.saveButton} onPress={handleSaveDataUser}>
                             <Text style={themes.saveButtonContent}>Salvar</Text>
                         </RectButton>
                     </View>
