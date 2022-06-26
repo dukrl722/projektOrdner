@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
     },
     cloak: {
         height: 120,
-        top: getStatusBarHeight(),
     },
     linearContainer: {
         height: '100%'
