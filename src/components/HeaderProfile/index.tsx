@@ -28,9 +28,9 @@ export function HeaderProfile({ name, campus, image, cloakProfessor, ...rest }: 
     function handleEditProfile() {
         if (cloakProfessor) {
             navigation.navigate('EditProfileProfessor');
+        } else {
+            navigation.navigate('EditProfileStudent');
         }
-
-        navigation.navigate('EditProfileStudent');
     }
 
     return (

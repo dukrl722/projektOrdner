@@ -19,7 +19,6 @@ export function Profile() {
 
     useEffect(() => {
         loadUser();
-        return () => {};
     }, []);
 
     return !user ? null : (

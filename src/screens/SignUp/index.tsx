@@ -24,6 +24,12 @@ export function SignUp() {
     const navigation = useNavigation();
 
     function handleNewAccount() {
+
+        if (!user || !password) {
+            alert('Insira um usuário e senha');
+            return;
+        }
+
         auth()
             .createUserWithEmailAndPassword(user, password)
             .then((data) => {

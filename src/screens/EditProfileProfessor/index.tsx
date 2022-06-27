@@ -22,17 +22,20 @@ import {theme} from "../../global/styles/theme";
 import AppLoading from "expo-app-loading";
 import firestore from "@react-native-firebase/firestore";
 import {useNavigation} from "@react-navigation/native";
+import {DefaultInput} from "../../components/DefaultInput";
 
 type Props = RectButtonProps & {}
 
 export function EditProfileProfessor({...rest}: Props) {
 
     const [user, setUser] = useState<User>();
-    const [name, setName] = useState<String>();
-    const [type, setType] = useState<String>();
-    const [city, setCity] = useState<String>([]);
-    const [course, setCourse] = useState<String>([]);
-    const [worked, setWorked] = useState([]);
+    const [avatar, setAvatar] = useState<String>(null);
+    const [name, setName] = useState<String>(null);
+    const [description, setDescription] = useState<String>(null);
+    const [type, setType] = useState<String>(null);
+    const [city, setCity] = useState<String>(null);
+    const [course, setCourse] = useState<String>(null);
+    const [worked, setWorked] = useState(null);
 
     const navigation = useNavigation();
 
@@ -47,18 +50,32 @@ export function EditProfileProfessor({...rest}: Props) {
     }
 
     function handleSaveDataUser() {
+
+        let userToAdd = {...user};
+        delete userToAdd.id;
+
+        if (!!avatar) userToAdd.avatar = avatar;
+
+        if (!!name) userToAdd.name = name;
+
+        if (!!description) userToAdd.descr = description;
+
+        if (!!type) userToAdd.type = type;
+
+        if (!!city) userToAdd.city = city;
+
+        if (!!course) userToAdd.course = course;
+
         firestore()
-            .collection('Users')
+            .collection('user')
             .doc(user.id)
-            .set({
-                name: name,
-                type: type,
-                city: city,
-                course: course
-            })
+            .set(
+                userToAdd
+            )
             .then(() => {
                 navigation.navigate('Profile');
-            });
+            }).catch(err => console.log(err))
+        ;
     }
 
     function handleCitySelect(item) {
@@ -69,8 +86,13 @@ export function EditProfileProfessor({...rest}: Props) {
         setCourse(item);
     }
 
-    function handleUserTypeSelect() {
+    function handleUserTypeSelect(item) {
+        setType(item);
+    }
 
+    function returnUrlImage(item) {
+        console.log(item);
+        setAvatar(item)
     }
 
     useEffect(() => {
@@ -85,16 +107,28 @@ export function EditProfileProfessor({...rest}: Props) {
         <Background>
             <ScrollView>
                 <View style={themes.container}>
-                    <AvatarEdit urlImage={user.avatar}/>
+                    <AvatarEdit urlImage={user.avatar} handle={returnUrlImage}/>
 
                     <View style={themes.content}>
                         <View style={themes.contentView}>
                             <TextInput
                                 placeholder="Nome Completo"
                                 style={themes.contentInput}
-                                value={user.name}
+                                defaultValue={user.name}
                                 onChangeText={(value) => {
                                     setName(value);
+                                }}
+                            />
+                        </View>
+                        <View style={themes.contentViewTextArea}>
+                            <TextInput
+                                placeholder="Descrição"
+                                style={themes.contentInput}
+                                multiline={true}
+                                numberOfLines={5}
+                                defaultValue={user.descr}
+                                onChangeText={(value) => {
+                                    setDescription(value);
                                 }}
                             />
                         </View>
@@ -109,11 +143,11 @@ export function EditProfileProfessor({...rest}: Props) {
                         />
                         <DropdownCity
                             onSelect={handleCitySelect}
-                            value={user.city}
+                            defaultButtonText={user.city}
                         />
                         <DropdownCourse
                             onSelect={handleCourseSelect}
-                            value={user.course}
+                            defaultButtonText={user.course}
                         />
                     </View>
 

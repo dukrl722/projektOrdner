@@ -22,6 +22,16 @@ export const themes = StyleSheet.create({
         color: theme.colors.menuInputBorder,
         borderWidth: 1
     },
+    contentViewTextArea: {
+        width: 331,
+        flexDirection: 'row',
+        marginBottom: 15,
+        borderRadius: 10,
+        backgroundColor: theme.colors.menuInputBackground,
+        borderColor: theme.colors.menuInputBorder,
+        color: theme.colors.menuInputBorder,
+        borderWidth: 1
+    },
     contentInput: {
         fontFamily: theme.fonts.text400,
         fontSize: 16,
