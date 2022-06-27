@@ -69,8 +69,9 @@ export function Home() {
     }
 
     async function getUserData() {
-        const currentUser = await UserHelper.getCurrent();
-        setUserAuth(currentUser);
+        UserHelper.getCurrent()
+            .then(result => setUserAuth(result))
+            .catch(err => console.log(err));
     }
 
     useEffect(() => {

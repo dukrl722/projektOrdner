@@ -14,11 +14,9 @@ export function Profile() {
     const [user, setUser] = useState<User>();
 
     async function getUserData() {
-        UserHelper.getCurrent().then(
-            (data) => {
-                setUser(currentUser);
-            }
-        );
+        UserHelper.getCurrent()
+            .then(data => setUser(data))
+            .catch(err => console.log(err));
     }
 
     useEffect(() => {
