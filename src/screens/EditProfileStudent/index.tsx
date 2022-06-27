@@ -21,6 +21,7 @@ import {RectButton} from "react-native-gesture-handler";
 import UserHelper from "../../helpers/user";
 import User from "../../helpers/user";
 import {useNavigation} from "@react-navigation/native";
+import {DefaultInput} from "../../components/DefaultInput";
 
 export function EditProfileStudent() {
 
@@ -45,7 +46,7 @@ export function EditProfileStudent() {
 
     function handleSaveDataUser() {
         firestore()
-            .collection('Users')
+            .collection('user')
             .doc(user.id)
             .set({
                 name: name,
@@ -91,7 +92,7 @@ export function EditProfileStudent() {
                             <TextInput
                                 placeholder="Nome Completo"
                                 style={themes.contentInput}
-                                value={user.name}
+                                defaultValue={user.name}
                                 onChangeText={(value) => {
                                     setName(value);
                                 }}

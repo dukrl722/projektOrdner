@@ -63,7 +63,7 @@ export function StudentProfile({ userId }: Props) {
                         name= {user.name}
                         campus={
                             (user.course || user.city) ?
-                                user.course +" - "+ user.campus +" - "+ user.city
+                                user.course +" - " + user.city
                                 : ''
                         }
                         image={user.avatar}

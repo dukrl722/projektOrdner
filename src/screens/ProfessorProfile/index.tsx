@@ -62,7 +62,7 @@ export function ProfessorProfile({ userId }: props) {
                         name= {user.name}
                         campus={
                             (user.city) ?
-                                user.campus +" - "+ user.city
+                                user.course +" - "+ user.city
                                 : ''
                         }
                         image={user.avatar}

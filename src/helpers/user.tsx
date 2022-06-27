@@ -1,6 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-interface User {
+
+export interface User {
     id: string,
     uid: string,
     avatar: string,

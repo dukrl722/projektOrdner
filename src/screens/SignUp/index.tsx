@@ -8,6 +8,7 @@ import IconProject from '../../assets/icon.png';
 
 import { InputRa } from '../../components/InputRa';
 import { InputPassword } from "../../components/InputPassword";
+import {ButtonLoginSquare} from "../../components/ButtonLoginSquare";
 import { useNavigation } from '@react-navigation/native';
 import { DropdownUserType } from "../../components/DropdownUserType";
 
@@ -23,6 +24,12 @@ export function SignUp() {
     const navigation = useNavigation();
 
     function handleNewAccount() {
+
+        if (!user || !password) {
+            alert('Insira um usuário e senha');
+            return;
+        }
+
         auth()
             .createUserWithEmailAndPassword(user, password)
             .then((data) => {
@@ -87,9 +94,8 @@ export function SignUp() {
                     />
                      <DropdownUserType placeholder="Eu sou?" onSelect={handleUserTypeSelect} />
                 </View>
-                <Button
-                    title='Inscreva-se'
-                    disabled={!user || !password}
+                <ButtonLoginSquare
+                    name="Inscreva-se"
                     onPress={() => handleNewAccount()}
                 />
             </View>

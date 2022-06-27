@@ -14,7 +14,8 @@ export const styles = StyleSheet.create({
 
     contentArea: {
         left: 33,
-        top: 200
+        top: 200,
+        right: 33
     },
  
     description: {
@@ -24,4 +25,10 @@ export const styles = StyleSheet.create({
         fontFamily: theme.fonts.text500
     },
 
+    bodyDescription: {
+        fontSize: 14,
+        color: theme.colors.secondary90,
+        width: 340,
+        textAlign: 'justify'
+    }
 });

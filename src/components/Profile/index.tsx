@@ -1,38 +1,45 @@
-import React from "react";
+// @ts-nocheck
+import React, {useEffect, useState} from "react";
 
 import {Text, View} from "react-native";
 
 import {themes} from "./styles";
 import {Avatar} from "../AvatarHeader";
+import UserHelper from "../../helpers/user";
+import User from "../../helpers/user";
+import AppLoading from "expo-app-loading";
 
-export type ProfileProps = {
-    name: string;
-    avatar: string;
-    descr: string;
-    projects: [string];
-    workedAreas: [string];
-    course: string;
-    city: string;
-    campus: string;
-}
+export function Profile() {
 
-type Props = {
-    data: ProfileProps
-}
+    const [user, setUser] = useState<User>();
 
-export function Profile({data} : Props) {
+    async function getUserData() {
+        UserHelper.getCurrent().then(
+            (data) => {
+                setUser(currentUser);
+            }
+        );
+    }
+
+    useEffect(() => {
+        getUserData();
+    }, []);
+
+    if (!user) {
+        return <AppLoading />;
+    }
 
     return (
         <View style={themes.container}>
 
-            <Avatar urlImage={data.avatar} />
+            <Avatar urlImage={user.avatar} />
 
             <View style={themes.user}>
                 <Text style={themes.greeting}>
                     Olá,
                 </Text>
                 <Text style={themes.username}>
-                    {data.name}
+                    {user.name}
                 </Text>
             </View>
 

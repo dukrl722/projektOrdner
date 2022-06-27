@@ -26,7 +26,7 @@ export function BodyProfessorProfile({description, areaWork, projectWork, ...res
         <View style={styles.container}>
             <View style={styles.contentArea}>
                 <Text style={styles.name}>Descrição geral</Text>
-                <Text>{description ? description : 'Nenhuma descrição'}</Text>
+                <Text style={styles.bodyDescription}>{description ? description : 'Nenhuma descrição'}</Text>
             </View>
             <View style={styles.contentArea}>
                 <Text style={styles.name}>Areas de Trabalho</Text>

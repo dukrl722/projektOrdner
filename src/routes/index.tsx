@@ -15,6 +15,7 @@ import { Details } from '../screens/Details';
 import { Profile } from '../screens/Profile';
 import { Select } from '../screens/Select';
 import { LoadApp } from '../screens/LoadApp';
+import { ProfessorProfile } from "../screens/ProfessorProfile";
 
 import { Feather } from '@expo/vector-icons';
 import {EditProfileProfessor} from "../screens/EditProfileProfessor";
@@ -95,6 +96,11 @@ export function AuthRoutes() {
                     name='Details'
                     options={stackSettings}
                     component={Details}
+                />
+                <Stack.Screen
+                    name='ProfessorProfile'
+                    options={stackSettings}
+                    component={ProfessorProfile}
                 />
                 <Stack.Screen
                     name='EditProfileProfessor'

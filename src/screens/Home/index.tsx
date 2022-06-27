@@ -84,7 +84,7 @@ export function Home() {
     return (
         <View style={themes.container}>
             <View style={themes.header}>
-                <Profile data={userAuth}/>
+                <Profile data={userAuth.id}/>
             </View>
             <View>
                 <BottomSheet height={655} ref={bottomSheet}>
