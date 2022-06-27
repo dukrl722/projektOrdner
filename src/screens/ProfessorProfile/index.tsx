@@ -10,6 +10,8 @@ import { ButtonLogout } from '../../components/ButtonLogout';
 
 import UserHelper from '../../helpers/user';
 
+import firestore from '@react-native-firebase/firestore';
+
 interface User {
     avatar: string,
     name: string,
@@ -38,6 +40,17 @@ export function ProfessorProfile({ userId }: props) {
     useEffect(() => {
         getUserData();
     }, []);
+
+    useEffect(() => {
+        const subscriber = firestore()
+            .collection('user')
+            .doc(userId)
+            .onSnapshot( documentSnapshot => {
+                setUser({ ...documentSnapshot.data(), id: documentSnapshot.id })
+            });
+
+        return () => subscriber();
+      }, [userId]);
 
     if( !user ) return <></>;
 

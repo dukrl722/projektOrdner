@@ -13,8 +13,8 @@ export type CardInfoProps = {
     id: string;
     name: string;
     city: string;
-    image: string;
-    description: string;
+    avatar: string;
+    descr: string;
 }
 
 type Props = {
@@ -30,7 +30,7 @@ export function CardInfo({data, onPress}: Props) {
         <TouchableOpacity onPress={onPress}>
             <LinearGradient colors={[secondary10, secondary20]} style={themes.container}>
                 <View style={themes.content}>
-                    <Image source={{uri: data.image}} style={themes.profilePicture}/>
+                    <Image source={{uri: data.avatar}} style={themes.profilePicture}/>
                     <View style={themes.infoUser}>
                         <Text style={themes.name}>
                             {data.name}
@@ -42,7 +42,7 @@ export function CardInfo({data, onPress}: Props) {
                 </View>
                 <View>
                     <Text style={themes.description}>
-                        {data.description}
+                        {data.descr}
                     </Text>
                 </View>
             </LinearGradient>

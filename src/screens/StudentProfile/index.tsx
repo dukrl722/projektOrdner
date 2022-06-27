@@ -1,8 +1,6 @@
-
+//@ts-nocheck
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
-import { Feather } from '@expo/vector-icons';
-import { RectButton } from 'react-native-gesture-handler';
+import { View } from 'react-native';
 import { styles } from './styles';
 
 import { HeaderProfile } from '../../components/HeaderProfile';
@@ -10,10 +8,12 @@ import { Background } from '../../components/Background';
 import { BodyStudentProfile } from '../../components/BodyStudentProfile';
 import UserHelper from "../../helpers/user";
 
-import { useNavigation } from '@react-navigation/native';
 import { ButtonLogout } from '../../components/ButtonLogout';
 
+import firestore from '@react-native-firebase/firestore';
+
 export type User = {
+    id: string,
     avatar: string,
     name: string,
     city: string,
@@ -41,6 +41,17 @@ export function StudentProfile({ userId }: Props) {
     useEffect(() => {
         getUserData();
     }, []);
+
+    useEffect(() => {
+        const subscriber = firestore()
+            .collection('user')
+            .doc(userId)
+            .onSnapshot( documentSnapshot => {
+                setUser({ ...documentSnapshot.data(), id: documentSnapshot.id })
+            });
+
+        return () => subscriber();
+      }, [userId]);
 
     if( !user ) return <></>;
 

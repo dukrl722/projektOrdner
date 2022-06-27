@@ -1,12 +1,11 @@
+//@ts-nocheck 
 import { useEffect, useState } from 'react';
-import { View } from 'react-native';
+
 
 import { ProfessorProfile } from '../ProfessorProfile';
 import { StudentProfile } from '../StudentProfile';
-
-import { useNavigation } from '@react-navigation/native';
-
 import UserHelper from '../../helpers/user';
+
 
 export function Profile() {
 
@@ -19,7 +18,6 @@ export function Profile() {
 
     useEffect(() => {
         loadUser();
-        return () => {};
     }, []);
 
     return !user ? null : (

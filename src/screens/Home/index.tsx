@@ -1,12 +1,11 @@
 //@ts-nocheck
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 
 import { RectButton } from "react-native-gesture-handler";
 
 import { themes } from './styles';
 
-import { Background } from '../../components/Background';
 import { Profile } from "../../components/Profile";
 import { CardInfo } from "../../components/CardInfo";
 import { FilterModal } from '../../components/FilterModal';
@@ -15,10 +14,8 @@ import { BottomSheet, BottomSheetRef } from 'react-native-sheet';
 import { useNavigation } from '@react-navigation/native';
 
 import firestore from '@react-native-firebase/firestore';
-import auth from '@react-native-firebase/auth';
 
 import UserHelper from "../../helpers/user";
-import user from "../../helpers/user";
 
 export function Home() {
 
@@ -26,65 +23,54 @@ export function Home() {
     const [search, setSearch] = useState([]);
     const [userAuth, setUserAuth] = useState([]);
 
-    const getUsers = () => {
+    const navigation = useNavigation();
+    const bottomSheet = useRef<BottomSheetRef>(null);
 
-        function validSearch( value ){
-            var string = typeof("string");
-            if(typeof(value) != string || value == ""){
-                return false
-            }
-            return true;
+    function isValidSearch( value ){
+        if (typeof(value) != 'string' || value == '') {
+            return false;
         }
 
-            var listUsers = []
-            firestore()
-            .collection('user')
-            .limit(15)
-            .get()
-            .then(querySnapshot => {
-                querySnapshot.docs.forEach( doc => {
-                    
-                    const user = {
-                        id: doc.id,
-                        uid: doc.data().uid,
-                        name: doc.data().name,
-                        image: doc.data().avatar,
-                        city: doc.data().campus,
-                        description: doc.data().descr,
-                        course: doc.data().course,
-                        type: doc.data().type,
-                    }
+        return true;
+    }
 
-                    // var opcaoKeyWord = true;
-                    // var opcaoName = true;
-                    // var opcaoCity = true;
-                    // var opcaoCourse = true;
+    function getUsers() {
+        let users = [];
+        let query = firestore().collection('user');
 
-                    // var isTeacher = String(user.type) == "professor";
+        query = query.where('type', '==', 'professor');
+        if (isValidSearch(search.city)) query = query.where('city', '==', search.city);
+        if (isValidSearch(search.course)) query = query.where('course', '==', search.course);
 
-                    // if(validSearch(search.keyWord)){
-                    //     opcaoKeyWord = String(user.description).toLowerCase().includes(String(search.keyWord).toLowerCase());
-                    // } 
-                    // if(validSearch(search.name)){
-                    //     opcaoName = String(user.name).toLowerCase().includes(String(search.name).toLowerCase());
-                    // } 
-                    // if(validSearch(search.city)){
-                    //     opcaoCity = (user.city == search.city);
-                    // }
-                    // if(validSearch(search.course)){
-                    //     opcaoCourse = (user.course == search.course);
-                    // };
+        query.get().then(querySnapshot => {
+            querySnapshot.docs.forEach( doc => {                        
+                const user = { ...doc.data(), id: doc.id }
 
-                    // if(opcaoKeyWord && opcaoName && opcaoCity && opcaoCourse && isTeacher){
-                        listUsers.push(user);
-                    // }
-                });
+                let isKeyWordOption = true;
+                let isNameOption = true;
 
-                setData(listUsers);
-            }).catch((e) => {
-                console.log('Erro, getUsers: ' + e + 'Search = ' + search);
+                if(isValidSearch(search.keyWord)){
+                    isKeyWordOption = user.description.toLowerCase().includes(search.keyWord.toLowerCase());
+                } 
+                if(isValidSearch(search.name)){
+                    isNameOption = user.name.toLowerCase().includes(search.name.toLowerCase());
+                } 
+
+                if(isKeyWordOption && isNameOption){
+                    users.push(user);
+                }
             });
-        
+
+            setData(users);
+
+        }).catch((e) => {
+            console.log('Erro, getUsers: ' + e + 'Search = ' + search);
+        });        
+    }
+
+    async function getUserData() {
+        const currentUser = await UserHelper.getCurrent();
+        setUserAuth(currentUser);
     }
 
     useEffect(() => {
@@ -94,15 +80,6 @@ export function Home() {
     useEffect(() => {
         getUsers();
     },[search])
-
-    const navigation = useNavigation();
-
-    const bottomSheet = useRef<BottomSheetRef>(null);
-
-    async function getUserData() {
-        const currentUser = await UserHelper.getCurrent();
-        setUserAuth(currentUser);
-    }
 
     return (
         <View style={themes.container}>

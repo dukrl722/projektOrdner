@@ -51,7 +51,7 @@ export function Details({ route }) {
                     <View style={{ paddingVertical: 10 }}>
                         <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'center' }}>
                             <Text style={themes.title}>{user.name} - </Text>
-                            <Text style={themes.titleBold}>{user.campus ? user.campus : 'Sem localidade cadastrada.'}</Text>
+                            <Text style={themes.titleBold}>{user.city ? user.city : 'Sem localidade cadastrada.'}</Text>
                         </View>
                         {user.course ? <Text style={themes.subtitle}>{user.course}</Text> : null}
                     </View>
