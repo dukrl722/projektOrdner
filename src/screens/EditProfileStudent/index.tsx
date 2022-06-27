@@ -26,11 +26,12 @@ import {DefaultInput} from "../../components/DefaultInput";
 export function EditProfileStudent() {
 
     const [user, setUser] = useState<User>();
-    const [name, setName] = useState<String>();
-    const [type, setType] = useState<String>();
-    const [city, setCity] = useState<String>([]);
-    const [course, setCourse] = useState<String>([]);
-    const [interest, setInterest] = useState([]);
+    const [avatar, setAvatar] = useState<String>(null);
+    const [name, setName] = useState<String>(null);
+    const [type, setType] = useState<String>(null);
+    const [city, setCity] = useState<String>(null);
+    const [course, setCourse] = useState<String>(null);
+    const [interest, setInterest] = useState(null);
 
     const navigation = useNavigation();
 
@@ -45,18 +46,30 @@ export function EditProfileStudent() {
     }
 
     function handleSaveDataUser() {
+
+        let userToAdd = {...user};
+        delete userToAdd.id;
+
+        if (!!avatar) userToAdd.avatar = avatar;
+
+        if (!!name) userToAdd.name = name;
+
+        if (!!type) userToAdd.type = type;
+
+        if (!!city) userToAdd.city = city;
+
+        if (!!course) userToAdd.course = course;
+
         firestore()
             .collection('user')
             .doc(user.id)
-            .set({
-                name: name,
-                type: type,
-                city: city,
-                course: course
-            })
+            .set(
+                userToAdd
+            )
             .then(() => {
                 navigation.navigate('Profile');
-            });
+            }).catch(err => console.log(err))
+        ;
     }
 
     function handleCitySelect(item) {
@@ -67,8 +80,12 @@ export function EditProfileStudent() {
         setCourse(item);
     }
 
-    function handleUserTypeSelect() {
+    function handleUserTypeSelect(item) {
+        setType(item);
+    }
 
+    function returnUrlImage(item) {
+        setAvatar(item)
     }
 
     useEffect(() => {
@@ -85,7 +102,7 @@ export function EditProfileStudent() {
         <Background>
             <ScrollView>
                 <View style={themes.container}>
-                    <AvatarEdit urlImage={user.avatar}/>
+                    <AvatarEdit urlImage={user.avatar} handle={returnUrlImage}/>
 
                     <View style={themes.content}>
                         <View style={themes.contentView}>
