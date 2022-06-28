@@ -2,19 +2,12 @@ import React from 'react';
 import {View, Text, Image, FlatList} from 'react-native';
 
 import {styles} from './styles';
-import {CardInfo} from "../CardInfo";
-
-export type BodyStudentProfileProps = {
-    id: string,
-    name: string
-}
 
 type Props = {
-    interests: [BodyStudentProfileProps]
+    interests: [string]
 }
 
-
-export function BodyStudentProfile({interests, ...rest}: Props) {
+export function BodyStudentProfile({interests}: Props) {
 
     return (
         <View style={styles.container}>
@@ -24,9 +17,9 @@ export function BodyStudentProfile({interests, ...rest}: Props) {
                     interests.length
                         ? <FlatList
                             data={interests}
-                            keyExtractor={interest => interest.id}
+                            keyExtractor={interest => interest}
                             renderItem={({ item }) => (
-                                <Text>{item.name}</Text>
+                                <Text>{item}</Text>
                             )}
                         />
                         : <Text>Nenhuma área de interesse</Text>

@@ -6,11 +6,13 @@ import { useNavigation } from '@react-navigation/native';
 
 import UserHelper from '../../helpers/user';
 interface User {
+    id: string,
     avatar: string,
     name: string,
     city: string,
     campus: string,
     course: string,
+    type: string,
     workedAreas: [string],
     projects: [string],
     descr: string
@@ -62,7 +64,7 @@ export function Details({ route }) {
                     )}
                     {!user.workedAreas ? null : (
                         <View style={themes.itensContainer}>
-                            <Text style={themes.titleBold} >Áreas Trabalhadas</Text>
+                            <Text style={themes.titleBold} >{user.type == 'student' ? 'Áreas de interesse' : 'Áreas Trabalhadas'}</Text>
                                 {user.workedAreas.map((wa, index) => {
                                     return (
                                         <View key={index.toString()} style={themes.itens}>
@@ -72,10 +74,10 @@ export function Details({ route }) {
                                 })}
                         </View>
                     )}
-                    {!user.projects ? null : (
+                    {user.type == 'student' ? null : (
                         <View style={themes.itensContainer}>
                             <Text style={themes.titleBold}>Projetos</Text>
-                            {user.projects.map((p, index) => {
+                            {user.projects.length ? null: user.projects.map((p, index) => {
                                 return (
                                     <View key={index.toString()} style={themes.itens}>
                                         <Text style={themes.itensText}>{p}</Text>

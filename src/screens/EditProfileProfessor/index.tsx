@@ -1,28 +1,22 @@
 // @ts-nocheck
 import React, {useEffect, useState} from 'react';
-import {FlatList, View, ScrollView, TouchableOpacity, TextInput, Text} from 'react-native';
+import {View, ScrollView, TextInput, Text, Alert} from 'react-native';
 
-import {ButtonSave} from '../../components/ButtonSave/index';
-import {EditInput} from '../../components/EditInput/index';
 import {AvatarEdit} from '../../components/AvatarEdit/index';
 import {EditField} from '../../components/EditField/index';
 import {DropdownCity} from "../../components/DropdownCity";
 import {DropdownCourse} from "../../components/DropdownCourse";
 import { Background } from '../../components/Background';
 
-import {LinearGradient} from "expo-linear-gradient";
 import {RectButton, RectButtonProps} from "react-native-gesture-handler";
 
 import {themes} from './styles';
 import {DropdownUserType} from "../../components/DropdownUserType";
 import {Feather} from "@expo/vector-icons";
-import User from "../../helpers/user";
 import UserHelper from "../../helpers/user";
-import {theme} from "../../global/styles/theme";
 import AppLoading from "expo-app-loading";
 import firestore from "@react-native-firebase/firestore";
 import {useNavigation} from "@react-navigation/native";
-import {DefaultInput} from "../../components/DefaultInput";
 
 type Props = RectButtonProps & {}
 
@@ -43,13 +37,15 @@ export function EditProfileProfessor({...rest}: Props) {
         UserHelper.getCurrent().then(
             (data) => {
                 setUser(data);
+                return;
             }
         ).catch(err => {
             console.log(err)
         })
     }
 
-    function handleSaveDataUser() {
+    async function handleSaveDataUser() {
+        await getCurrentUser();
 
         let userToAdd = {...user};
         delete userToAdd.id;
@@ -91,8 +87,39 @@ export function EditProfileProfessor({...rest}: Props) {
     }
 
     function returnUrlImage(item) {
-        console.log(item);
         setAvatar(item)
+    }
+
+    function handleWorkAreaDelete(newItem:string) {
+        
+        let newUser = { ...user };
+
+        newUser.workedAreas = newUser.workedAreas.filter(wa => wa != newItem);
+
+        firestore()
+            .collection('user')
+            .doc(user.id)
+            .set(newUser)
+            .then(() => {
+                getCurrentUser();
+                Alert.alert('Registro excluído com sucesso!');
+            });
+    }
+
+    function handleProjectDelete(newItem:string) {
+        
+        let newUser = { ...user };
+
+        newUser.projects = newUser.projects.filter(project => project != newItem);
+
+        firestore()
+            .collection('user')
+            .doc(user.id)
+            .set(newUser)
+            .then(() => {
+                getCurrentUser();
+                Alert.alert('Registro excluído com sucesso!');
+            });
     }
 
     useEffect(() => {
@@ -151,32 +178,30 @@ export function EditProfileProfessor({...rest}: Props) {
                         />
                     </View>
 
-                    <EditField placeholder="Áreas trabalhadas" items={user.workedAreas} theme="interesse"/>
+                    <EditField placeholder="Áreas trabalhadas" onClose={() => getCurrentUser()} />
 
                     {
                         user.workedAreas.map(
                             (item, index) => (
                                 <View style={themes.listContainer} key={index.toString()}>
-                                    <Text style={themes.text}>{item.name}</Text>
+                                    <Text style={themes.text}>{item}</Text>
                                     <View style={themes.iconContent}>
-                                        <Feather name={"edit-2"} size={20} style={{marginRight: 10}} />
-                                        <Feather name={"trash-2"} size={20} />
+                                        <Feather name={"trash-2"} size={20} onPress={() => handleWorkAreaDelete(item)} />
                                     </View>
                                 </View>
                             )
                         )
                     }
 
-                    <EditField placeholder="Projetos" items={user.projects} theme="projeto"/>
+                    <EditField placeholder="Projetos" isProject={true} onClose={() => getCurrentUser()} />
 
                     {
                         user.projects.map(
                             (item, index) => (
                                 <View style={themes.listContainer} key={index.toString()}>
-                                    <Text style={themes.text}>{item.name}</Text>
+                                    <Text style={themes.text}>{item}</Text>
                                     <View style={themes.iconContent}>
-                                        <Feather name={"edit-2"} size={20} style={{marginRight: 10}} />
-                                        <Feather name={"trash-2"} size={20} />
+                                        <Feather name={"trash-2"} size={20} onPress={() => handleProjectDelete(item)} />
                                     </View>
                                 </View>
                             )

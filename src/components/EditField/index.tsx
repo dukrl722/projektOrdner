@@ -7,14 +7,19 @@ import {InterestModal} from "../InterestModal";
 import {themes} from './styles';
 
 interface Props {
-    placeholder: string
-    items: any[]
-    theme: string
+    placeholder: string,
+    isProject: boolean,
+    onClose: Function
 }
 
-export function EditField({placeholder, items, theme, ...rest}: Props) {
+export function EditField({placeholder, isProject, onClose}: Props) {
 
     const bottomsheet = useRef<BottomSheetRef>(null);
+
+    function handleModalClose() {
+        bottomsheet.current?.hide();
+        if (!!onClose) onClose();
+    }
 
     return (
         <View style={themes.container}>
@@ -27,7 +32,8 @@ export function EditField({placeholder, items, theme, ...rest}: Props) {
             </TouchableOpacity>
 
             <BottomSheet height={400} ref={bottomsheet}>
-                <InterestModal items={items}/>
+                {/* @ts-ignore */}
+                <InterestModal onClose={handleModalClose} isProject={isProject} />
             </BottomSheet>
         </View>
     )

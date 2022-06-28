@@ -3,21 +3,10 @@ import {View, Text, FlatList, Linking} from 'react-native';
 
 import {styles} from './styles';
 
-export type AreaProfessor = {
-    id: string;
-    name: string;
-}
-
-export type ProjectProfessor = {
-    id: string;
-    name: string;
-    link: string;
-}
-
 type Props = {
     description: string,
-    areaWork: [AreaProfessor],
-    projectWork: [ProjectProfessor],
+    areaWork: [string],
+    projectWork: [string],
 }
 
 export function BodyProfessorProfile({description, areaWork, projectWork, ...rest}: Props) {
@@ -34,9 +23,9 @@ export function BodyProfessorProfile({description, areaWork, projectWork, ...res
                     areaWork.length
                         ? <FlatList
                             data={areaWork}
-                            keyExtractor={area => area.id}
+                            keyExtractor={area => area}
                             renderItem={({ item }) => (
-                                <Text>{item.name}</Text>
+                                <Text>{item}</Text>
                             )}
                         />
                         : <Text>Nenhuma área trabalhada</Text>
@@ -48,14 +37,12 @@ export function BodyProfessorProfile({description, areaWork, projectWork, ...res
                     areaWork.length
                         ? <FlatList
                             data={projectWork}
-                            keyExtractor={project => project.id}
+                            keyExtractor={project => project}
                             renderItem={({ item }) => (
-                                <Text onPress={() => {
-                                    Linking.openURL(item.link)
-                                }}>{item.name}</Text>
+                                <Text>{item}</Text>
                             )}
                         />
-                        : <Text>Nenhuma projeto feito</Text>
+                        : <Text>Nenhum projeto feito</Text>
                 }
             </View>
         </View>

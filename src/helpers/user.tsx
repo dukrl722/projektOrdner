@@ -32,25 +32,17 @@ function parseUser(id: string, userDoc: any): User {
 }
 
 async function getCurrent(): Promise<User | undefined> {
-    const authUser = auth().currentUser;
+    try {
+        const authUser = auth().currentUser;
+        if (!authUser) throw 'Usuário não encontrado';
     
-    if (!!authUser) {
-        return firestore()
-            .collection('user')
-            .where('uid', '==', authUser.uid)
-            .limit(1)
-            .get()
-            .then(snapshot => {
-                if (!!snapshot.docs.length) {
-                    const userDoc = { ...snapshot.docs[0].data() };
-                    return parseUser(snapshot.docs[0].id, userDoc);
-                } else {
-                    return;
-                }
-            });
+        let users = await firestore().collection('user').where('uid', '==', authUser.uid).get();
+        let user = users.docs[0].data();
+        let parsedUser = parseUser(users.docs[0].id, user);
+        return parsedUser;
+    } catch (error) {
+        console.log(error);        
     }
-
-    return; //TODO - tratar o erro onde chama essa função
 }
 
 async function get(id: string): Promise<User> {

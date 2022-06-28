@@ -12,8 +12,11 @@ export function ButtonLogout() {
     function onSignOut(){
         auth().signOut()
             .then(() => {
-                //@ts-ignore
-                navigation.reset('Select');
+                navigation.reset({
+                    index: 0,
+                    //@ts-ignore
+                    routes: [{ name: 'Select' }],
+                });
             });
     }
 

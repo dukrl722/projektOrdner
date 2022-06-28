@@ -11,6 +11,7 @@ import { ButtonLogout } from '../../components/ButtonLogout';
 import UserHelper from '../../helpers/user';
 
 import firestore from '@react-native-firebase/firestore';
+import AppLoading from 'expo-app-loading';
 
 interface User {
     avatar: string,
@@ -52,7 +53,7 @@ export function ProfessorProfile({ userId }: props) {
         return () => subscriber();
       }, [userId]);
 
-    if( !user ) return <></>;
+    if( !user ) return <AppLoading />;
 
     return (
         <Background>
@@ -62,7 +63,7 @@ export function ProfessorProfile({ userId }: props) {
                         name= {user.name}
                         campus={
                             (user.city) ?
-                                user.course +" - "+ user.city
+                                user.course +' - '+ user.city
                                 : ''
                         }
                         image={user.avatar}

@@ -79,7 +79,7 @@ export function SignUp() {
                     <InputRa
                         placeholder="Insira seu email institucional"
                         value={user}
-                        onChangeText={(value) => { console.log(value), setUser(value) }}
+                        onChangeText={(value) => setUser(value)}
                     />
                     <InputPassword
                         secureTextEntry={true}

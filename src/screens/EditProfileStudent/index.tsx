@@ -98,6 +98,21 @@ export function EditProfileStudent() {
         return <AppLoading />;
     }
 
+    function handleWorkAreaDelete(newItem:string) {        
+        let newUser = { ...user };
+
+        newUser.workedAreas = newUser.workedAreas.filter(wa => wa != newItem);
+
+        firestore()
+            .collection('user')
+            .doc(user.id)
+            .set(newUser)
+            .then(() => {
+                getCurrentUser();
+                Alert.alert('Registro excluído com sucesso!');
+            });
+    }
+
     return (
         <Background>
             <ScrollView>
@@ -134,16 +149,15 @@ export function EditProfileStudent() {
                         />
                     </View>
 
-                    <EditField placeholder="Areas de interesse" items={user.workedAreas} theme="interesse"/>
+                    <EditField placeholder="Areas de interesse" onClose={() => getCurrentUser()} />
 
                     {
                         user.workedAreas.map(
                             (item, index) => (
                                 <View style={themes.listContainer} key={index.toString()}>
-                                    <Text style={themes.text}>{item.name}</Text>
+                                    <Text style={themes.text}>{item}</Text>
                                     <View style={themes.iconContent}>
-                                        <Feather name={"edit-2"} size={20} style={{marginRight: 10}} />
-                                        <Feather name={"trash-2"} size={20} />
+                                        <Feather name={"trash-2"} size={20} onPress={() => handleWorkAreaDelete(item)} />
                                     </View>
                                 </View>
                             )

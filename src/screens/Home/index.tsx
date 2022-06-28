@@ -16,12 +16,13 @@ import { useNavigation } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 
 import UserHelper from "../../helpers/user";
+import AppLoading from 'expo-app-loading';
 
 export function Home() {
 
     const [data, setData] = useState([]);
     const [search, setSearch] = useState([]);
-    const [userAuth, setUserAuth] = useState([]);
+    const [userAuth, setUserAuth] = useState();
 
     const navigation = useNavigation();
     const bottomSheet = useRef<BottomSheetRef>(null);
@@ -35,10 +36,13 @@ export function Home() {
     }
 
     function getUsers() {
+        if (!userAuth) return;
+        
         let users = [];
         let query = firestore().collection('user');
 
-        query = query.where('type', '==', 'professor');
+        query = query.where('type', '==', (userAuth.type == 'student') ? 'professor' : 'student');
+
         if (isValidSearch(search.city)) query = query.where('city', '==', search.city);
         if (isValidSearch(search.course)) query = query.where('course', '==', search.course);
 
@@ -76,11 +80,13 @@ export function Home() {
 
     useEffect(() => {
         getUserData();
-    }, [userAuth])
+    }, [])
 
     useEffect(() => {
         getUsers();
-    },[search])
+    },[search, userAuth])
+
+    if (!userAuth) return <AppLoading />
 
     return (
         <View style={themes.container}>

@@ -72,7 +72,6 @@ export function StudentProfile({ userId }: Props) {
                 </View>
                 <View style={styles.body}>
                     <BodyStudentProfile
-                    //@ts-ignore
                         interests={user.workedAreas}
                     ></BodyStudentProfile>
                 </View>
