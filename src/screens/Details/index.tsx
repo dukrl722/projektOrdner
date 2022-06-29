@@ -77,7 +77,7 @@ export function Details({ route }) {
                     {user.type == 'student' ? null : (
                         <View style={themes.itensContainer}>
                             <Text style={themes.titleBold}>Projetos</Text>
-                            {user.projects.length ? null: user.projects.map((p, index) => {
+                            {!user.projects.length ? null : user.projects.map((p, index) => {
                                 return (
                                     <View key={index.toString()} style={themes.itens}>
                                         <Text style={themes.itensText}>{p}</Text>
